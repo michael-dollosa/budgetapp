@@ -1,18 +1,18 @@
 import { useState } from "react"
 import { connect } from "react-redux"
+import { addTransaction } from "../redux/budgetAccount/budgetAccount.actions"
 
-
-const AddTransactionForm = ({uniqueID, addBudgetAccount}) => {
-  const [accountName, setAccountName] = useState("")
-  const [budget, setBudget] = useState(0)
+const AddTransactionForm = ({uniqueID, addTransaction}) => {
+  const [transactionName, setTransactionName] = useState("")
+  const [cost, setCost] = useState(0)
   const [date, setDate] = useState("")
   
   const handleNameChange = (event) => {
-     setAccountName(event.target.value)
+    setTransactionName(event.target.value)
   }
 
   const handleCostChange = (event) => {
-    setBudget(event.target.value)
+    setCost(event.target.value)
   }
 
   const handleDateChange = (event) => {
@@ -20,15 +20,15 @@ const AddTransactionForm = ({uniqueID, addBudgetAccount}) => {
   }
 
   const submitForm = (event) => {
+   
    let newTransaction = {
-    //  name: accountName,
-    //  budget: budget,
-    //  transactions: [],
-    //  uniqueID: uniqueID
+    name: transactionName,
+    cost: cost,
+    date: date
    }
+   console.log(newTransaction)
+   addTransaction(newTransaction)
 
-  //  setAccountName("")
-  //  setBudget(0)
    event.preventDefault()
   }
   return(
@@ -36,24 +36,24 @@ const AddTransactionForm = ({uniqueID, addBudgetAccount}) => {
      Add Transaction Form
      <form onSubmit={event => submitForm(event)}>
        <label>Transaction Name</label>
-       <input type="text" value={ accountName } onChange={event => handleNameChange(event)} />
+       <input type="text" value={ transactionName } onChange={event => handleNameChange(event)} />
        <label>Cost</label>
-       <input type="number" value={ budget } onChange={event => handleCostChange(event)} />
+       <input type="number" value={ cost } onChange={event => handleCostChange(event)} />
        <label>Date</label>
        <input type="date" onChange={event => handleDateChange(event)}/>
-       <input type="submit" value="Add Account"/>
+       <input type="submit" value="Add Transaction"/>
      </form>
    </div>
   )
 }
 
 const mapStatetoProps = state => ({
-  //need to get the current uniqueID to add as identifier for each new account
-  uniqueID: state.budgetAccount.uniqueID
+  //need to get the ID of the current account selected
+  uniqueID: state.budgetAccount.currentAccountID
 })
 
 const mapDispatchToProps = dispatch => ({
- 
+  addTransaction: transaction => dispatch(addTransaction(transaction))
 })
 
 export default connect(mapStatetoProps, mapDispatchToProps)(AddTransactionForm)

@@ -1,22 +1,9 @@
-//always have type and payload
-/*
-account: [
-  name:
-  payload:
-  transaction: [
-    {
-      name:
-      date:
-      amount:
-    }
-  ]
-]
-*/
+import { addTransaction } from "./budgetAccount.utils"
 
 const INITIAL_STATE = {
   currentAccountID: null,
   accounts: [],
-  uniqueID: 0
+  counter: 0
 }
 const budgetAccountReducer = (state = INITIAL_STATE, action) => {
   switch(action.type) {
@@ -24,14 +11,18 @@ const budgetAccountReducer = (state = INITIAL_STATE, action) => {
       return{
         ...state,
         accounts: [...state.accounts, action.payload],
-        uniqueID: state.uniqueID + 1
+        counter: state.counter + 1
       }
     case "SET_BUDGET_ACCOUNT":
       return{
         ...state,
         currentAccountID: action.payload
       }
-    
+    case "ADD_TRANSACTION":
+      return{
+        ...state,
+        accounts: addTransaction(state, action.payload)
+      }
     default:
       return state
   }

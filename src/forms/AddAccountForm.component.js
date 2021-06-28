@@ -43,7 +43,7 @@ import { addBudgetAccount } from "../redux/budgetAccount/budgetAccount.actions"
 
  const mapStatetoProps = state => ({
    //need to get the current uniqueID to add as identifier for each new account
-   uniqueID: state.budgetAccount.uniqueID
+   uniqueID: state.budgetAccount.counter
  })
 
  const mapDispatchToProps = dispatch => ({
