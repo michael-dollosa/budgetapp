@@ -1,11 +1,15 @@
 import "./Sidebar.styles.scss"
-import { useState } from "react"
 import { connect } from "react-redux"
 import { setBudgetAccount } from "../redux/budgetAccount/budgetAccount.actions"
+import { toggleAccountForm } from "../redux/modal/modal.actions"
+
 import { BsPlusCircle } from "react-icons/bs";
 
-const Sidebar = ({ accounts, setBudgetAccount }) => {
-
+const Sidebar = ({ accounts, setBudgetAccount, accountToggleFlag, toggleAccountForm }) => {
+  //fn to set toggle state
+  const handleSetToggleForm = () => {
+    toggleAccountForm(!accountToggleFlag)
+  }
   //to set current account to show
   const handleSetBudgetAccount = (account) => {
     setBudgetAccount(account)
@@ -27,9 +31,8 @@ const Sidebar = ({ accounts, setBudgetAccount }) => {
           <label>LOGS</label>
           <h4>Account Name</h4>
         </section>
-
         <section class="nav-footer">
-          <BsPlusCircle style={{ color: "white"}} />
+          <BsPlusCircle class="nav-icon" onClick={() => handleSetToggleForm()}/>
         </section>
       </main>
     </nav>
@@ -38,10 +41,12 @@ const Sidebar = ({ accounts, setBudgetAccount }) => {
 
 
 const mapStateToProps = state => ({
-  accounts: state.budgetAccount.accounts
+  accounts: state.budgetAccount.accounts,
+  accountToggleFlag: state.formToggle.addAccountModal
 })
 
 const mapDispatchToProps = dispatch => ({
-  setBudgetAccount: currentAccountID => dispatch(setBudgetAccount(currentAccountID))
+  setBudgetAccount: currentAccountID => dispatch(setBudgetAccount(currentAccountID)),
+  toggleAccountForm: flag => dispatch(toggleAccountForm(flag))
 })
 export default connect(mapStateToProps, mapDispatchToProps)(Sidebar)

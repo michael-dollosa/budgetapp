@@ -1,10 +1,11 @@
 import { useState } from "react"
 import { connect } from "react-redux"
 import { addBudgetAccount } from "../redux/budgetAccount/budgetAccount.actions"
+import { toggleAccountForm } from "../redux/modal/modal.actions"
 import { BsX } from "react-icons/bs";
 import "./AddAccountForm.styles.scss"
 
-const AddAccountForm = ({uniqueID, addBudgetAccount}) => {
+const AddAccountForm = ({uniqueID, addBudgetAccount, accountToggleFlag, toggleAccountForm}) => {
   const [accountName, setAccountName] = useState("")
   const [budget, setBudget] = useState(0)
 
@@ -16,6 +17,11 @@ const AddAccountForm = ({uniqueID, addBudgetAccount}) => {
     setBudget(event.target.value)
   }
 
+  //fn to set toggle state
+  const handleSetToggleForm = () => {
+    toggleAccountForm(!accountToggleFlag)
+  }
+
   const submitForm = (event) => {
     let newAccount = {
       name: accountName,
@@ -25,6 +31,7 @@ const AddAccountForm = ({uniqueID, addBudgetAccount}) => {
     }
 
     addBudgetAccount(newAccount)
+    toggleAccountForm(!accountToggleFlag)
     setAccountName("")
     setBudget(0)
     event.preventDefault()
@@ -35,7 +42,7 @@ const AddAccountForm = ({uniqueID, addBudgetAccount}) => {
         <div class="account-form">
           <div class="form-header">
             <h2 class="subheading">Create Budget Account</h2>
-            <BsX class="icon-exit"/>
+            <BsX class="icon-exit" onClick={() => handleSetToggleForm()}/>
           </div>
           <form onSubmit={event => submitForm(event)}>
             <label>Name</label>
@@ -52,11 +59,13 @@ const AddAccountForm = ({uniqueID, addBudgetAccount}) => {
 
 const mapStatetoProps = state => ({
   //need to get the current uniqueID to add as identifier for each new account
-  uniqueID: state.budgetAccount.counter
+  uniqueID: state.budgetAccount.counter,
+  accountToggleFlag: state.formToggle.addAccountModal
 })
 
 const mapDispatchToProps = dispatch => ({
- addBudgetAccount: account => dispatch(addBudgetAccount(account))
+ addBudgetAccount: account => dispatch(addBudgetAccount(account)),
+ toggleAccountForm: flag => dispatch(toggleAccountForm(flag))
 })
 
 export default connect(mapStatetoProps, mapDispatchToProps)(AddAccountForm)
