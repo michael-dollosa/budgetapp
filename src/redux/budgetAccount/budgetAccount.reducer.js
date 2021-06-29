@@ -1,8 +1,28 @@
 import { addTransaction } from "./budgetAccount.utils"
 
+const testAccounts = [
+  {
+    name: "Test Account 1",
+    budget: 30000,
+    transactions: [],
+    uniqueID: 9000
+  },
+  {
+    name: "Test Account 2",
+    budget: 15000,
+    transactions: [],
+    uniqueID: 9001
+  },
+  {
+    name: "Test Account 3",
+    budget: 10000,
+    transactions: [],
+    uniqueID: 9002
+  },
+]
 const INITIAL_STATE = {
   currentAccountID: null,
-  accounts: [],
+  accounts: testAccounts,
   counter: 0
 }
 const budgetAccountReducer = (state = INITIAL_STATE, action) => {

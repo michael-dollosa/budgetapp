@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+:root {
+  //general
+  --color-primary: #002F52;
+  --color-secondary: #004D52;
+  --color-background: #F3F4F9;
+
+  --color-red: #DB6757;
+  --color-red-highlight: #F0D5D5;
+
+  --color-green: #57DB93;
+  --color-green-highlight: #D5F0DD;
+
+  //font
+  --font-color-white: #FFFFFF;
+  --font-color-default: #000000;
+  --font-color-label: #C0C0C0;
+  --font-color-heading: #000000;
+  --font-color-subheading: #004D52;
+
+  //button
+  --color-button-primary: #002F52;
+  --color-button-text: #FFFFFF;
+
+  //form
+  --form-color-container: #D0E7FD;
+  --form-color-label: #000000;
+
+  //font size
+  --font-size-default: .9rem;
+  --font-size-label: .8rem;
+  --font-size-subheading: 1.3rem;
+  --font-size-heading-large: 5rem;
+}
+
+//reset
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;  /* for all elements to inherit box-sizing attribute in body element css */
+}
+
+html {
+  font-size: 62.5%; /* 1rem = 10px; 10px/16px = 62.5% -- 16px is default font size in browser*/
+  scroll-behavior: smooth;
+  font-family: 'Roboto', sans-serif;
+  font-size: var(--font-size-default);
+  font-weight: 300;
+}
+
+body{
+  background-color: var(--color-background);
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  >*:not(:last-child){
+    margin-bottom: 1rem;
+  }
+
+  >label{
+    font-size: var(--font-size-label);
+  }
+}
+
+input[type=text],
+input[type=number],
+input[type=date]{
+  width: 95%;
+  outline: none;
+  padding: 8px;
+  font: inherit;
+  border: none;
+}
+
+//remove spinner from input type num
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+input[type=submit]{
+  margin-top: 2rem;
+  outline: none;
+  padding: 8px;
+  font: inherit;
+  border: none;
+  width: 95%;
+  background-color: var(--color-button-primary);
+  color: var(--color-button-text);
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+//helper classes
+
+.heading{
+  font-size: var(--font-size-heading-large);
+}
+
+.subheading{
+  font-size: var(--font-size-subheading);
+}
+
+.modal-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--color-primary);
+  opacity: 50%;
+}
+
