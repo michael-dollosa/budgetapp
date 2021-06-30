@@ -3,7 +3,7 @@
 :root {
   //general
   --color-primary: #002F52;
-  --color-secondary: #004D52;
+  --color-secondary: #e9e0ce;
   --color-background: #F3F4F9;
 
   --color-red: #DB6757;
@@ -50,6 +50,11 @@ html {
   font-family: 'Roboto', sans-serif;
   font-size: var(--font-size-default);
   font-weight: 300;
+
+  @media only screen and (max-width: 900px) {
+    font-size: 70%;
+  }
+
 }
 
 body{
@@ -73,7 +78,8 @@ form{
 
 input[type=text],
 input[type=number],
-input[type=date]{
+input[type=date],
+select{
   width: 95%;
   outline: none;
   padding: 8px;

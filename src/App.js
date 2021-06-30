@@ -5,11 +5,8 @@ import "./App.styles.scss"
 import AddAccountFormComponent from "./forms/AddAccountForm.component";
 import AddTransactionFormComponent from "./forms/AddTransactionForm.component";
 
-const App = ({ accountToggleFlag, transactionToggleFlag }) => {
-  //main body
-  // <Account />
-  //   <Stat />
-  //   <Transaction />
+const App = ({ accountToggleFlag, transactionToggleFlag, accounts }) => {
+
   return (
   <main className="container-main">
     {accountToggleFlag ? <AddAccountFormComponent /> : null }

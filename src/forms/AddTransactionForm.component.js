@@ -9,6 +9,7 @@ const AddTransactionForm = ({transactionUniqueID, addTransaction, addTransaction
   const [transactionName, setTransactionName] = useState("")
   const [cost, setCost] = useState(0)
   const [date, setDate] = useState("")
+  const [type, setType] = useState("expense")
   
   const handleTransactionFormToggle = () => {
     toggleTransactionForm(!addTransactionToggle)
@@ -26,9 +27,15 @@ const AddTransactionForm = ({transactionUniqueID, addTransaction, addTransaction
     setDate(event.target.value)
   }
 
+  const handleTypeChange = (event) => {
+    console.log("select type")
+    setType(event.target.value)
+  }
+
   const submitForm = (event) => {
    
    let newTransaction = {
+    type: type,
     name: transactionName,
     cost: cost,
     date: date,
@@ -48,6 +55,10 @@ const AddTransactionForm = ({transactionUniqueID, addTransaction, addTransaction
             <BsX className="icon-exit" onClick={ () => handleTransactionFormToggle() }/>
           </div>
           <form onSubmit={event => submitForm(event)}>
+            <select id="transactionType" name="transactionType" value={type} onChange={ event => handleTypeChange(event) }>
+              <option value="expense" >Expense</option>
+              <option value="income" >Income</option>
+            </select>
             <label>Name</label>
             <input type="text" value={ transactionName } onChange={event => handleNameChange(event)} />
             <label>Cost</label>

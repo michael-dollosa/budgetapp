@@ -1,25 +1,32 @@
 import "./TransactionItem.styles.scss"
 import { connect } from "react-redux"
 import { deleteTransaction } from "../redux/budgetAccount/budgetAccount.actions"
-import { formatNumber } from "../helper/helper";
+import { formatCost } from "../helper/helper";
 import { BsTrash } from "react-icons/bs";
 
 const TransactionItem = ({key, transaction, deleteTransaction}) => {
-  const {name, cost, date, transactionID} = transaction
+  const {type, name, cost, date, transactionID} = transaction
 
   const handleDeleteTransaction = (id) => {
     deleteTransaction(id)
   }
+
+  let incomeColorCode = (type === "expense") ? "expense-color" : "income-color"
   return(
-    <div className="item-container">
+    <div className={`item-container`}>
       <section className="item-detail">
         <h4>{ name }</h4>
         <label>{ date }</label>
       </section>
       <section className="item-cost">
-        <h3>{ formatNumber(cost) }</h3>
+        <h3
+          className={incomeColorCode}        
+        >{ formatCost(type, cost) }</h3>
       </section>
-      <BsTrash className="item-icon" onClick={ () => handleDeleteTransaction(transactionID)}/>
+      <BsTrash 
+        className="item-icon"
+        onClick={ () => handleDeleteTransaction(transactionID)} 
+      />
     </div>
   )
 }

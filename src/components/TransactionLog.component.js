@@ -6,7 +6,10 @@ import TransactionItem from "./TransactionItem.component";
 const TransactionLog = ({transactions, addTransactionToggle, toggleTransactionForm}) => {
 
   const transactionList = transactions.map((transaction, index) => (
-    <TransactionItem key={index} transaction={transaction} />
+    <div className="transaction-item-container">
+      <TransactionItem key={index} transaction={transaction} />
+    </div>
+    
   ))
 
   const handleTransactionFormToggle = () => {

@@ -1,3 +1,12 @@
+const updateIncome = (transactionItem) => {
+  if(transactionItem.type === "income") return transactionItem.cost
+  else return 0
+}
+const updateExpense = (transactionItem) => {
+  if(transactionItem.type === "expense") return transactionItem.cost
+  else return 0
+}
+
 export const addTransaction = (budgetState, transactionToAdd) => {
   //need to get the current uniqueID to add as identifier for each new account
   const currentAccountID =  budgetState.currentAccountID
@@ -7,7 +16,11 @@ export const addTransaction = (budgetState, transactionToAdd) => {
     //check if currentAccountID is same with the iterated account
     account.uniqueID === currentAccountID
     //true - return object with account, adding the "new" array of transaction
-    ? {...account, transactions: [...account.transactions, transactionToAdd]}
+    ? {...account, 
+      transactions: [...account.transactions, transactionToAdd],
+      totalIncome: account.totalIncome + Number(updateIncome(transactionToAdd)),
+      totalExpense: account.totalExpense + Number(updateExpense(transactionToAdd))
+    }
     //false - return account obj
     : account
     )
@@ -15,8 +28,6 @@ export const addTransaction = (budgetState, transactionToAdd) => {
 
 const removeItemFromArray = (transactionArray, transactionIdToDelete) => {
   return transactionArray.filter((transactionItem) => {
-    console.log("item", transactionItem.transactionID)
-    console.log("delete", transactionIdToDelete)
     return transactionItem.transactionID !== transactionIdToDelete
   })
 }

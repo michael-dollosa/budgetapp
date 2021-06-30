@@ -1,6 +1,6 @@
 import { Fragment } from "react"
 import { connect } from "react-redux"
-import { formatNumber } from "../helper/helper"
+import { formatBudget } from "../helper/helper"
 import "./Header.styles.scss"
 const Header = ({account}) => {
 
@@ -16,7 +16,7 @@ const Header = ({account}) => {
       <div className="header-main">
         <section className="header-main-title">
           <label className="header-label">BUDGET</label>
-          <h1 className="header-budget">{formatNumber(account.budget)}</h1>
+          <h1 className="header-budget">{formatBudget(account.budget)}</h1>
         </section>
         <section className="header-main-stat">
           <h4>Initial Balance: <span className="header-stat">30,000</span></h4>
