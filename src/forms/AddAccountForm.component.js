@@ -38,11 +38,11 @@ const AddAccountForm = ({uniqueID, addBudgetAccount, accountToggleFlag, toggleAc
   }
   return(
     <div className="modal-container">
-      <section class="account-form-container">
-        <div class="account-form">
-          <div class="form-header">
-            <h2 class="subheading">Create Budget Account</h2>
-            <BsX class="icon-exit" onClick={() => handleSetToggleForm()}/>
+      <section className="account-form-container">
+        <div className="account-form">
+          <div className="form-header">
+            <h2 className="subheading">Create Budget Account</h2>
+            <BsX className="icon-exit" onClick={() => handleSetToggleForm()}/>
           </div>
           <form onSubmit={event => submitForm(event)}>
             <label>Name</label>

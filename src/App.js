@@ -6,6 +6,7 @@ import { connect } from "react-redux"
 import "./App.styles.scss"
 import AddAccountFormComponent from "./forms/AddAccountForm.component";
 import AddTransactionFormComponent from "./forms/AddTransactionForm.component";
+import Header from "./components/Header.component";
 
 const App = ({ accountToggleFlag }) => {
   //main body
@@ -16,6 +17,7 @@ const App = ({ accountToggleFlag }) => {
   <main>
     <Sidebar />
     {accountToggleFlag ? <AddAccountFormComponent /> : null }
+    <Header />
   </main>
 )}
 

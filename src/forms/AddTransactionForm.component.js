@@ -38,8 +38,8 @@ const AddTransactionForm = ({uniqueID, addTransaction}) => {
       <section className="transaction-form-container">
         <div className="transaction-form">
           <div className="form-header">
-            <h2 class="subheading">Add Transaction</h2>
-            <BsX class="icon-exit"/>
+            <h2 className="subheading">Add Transaction</h2>
+            <BsX className="icon-exit"/>
           </div>
           <form onSubmit={event => submitForm(event)}>
             <label>Name</label>

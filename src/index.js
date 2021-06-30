@@ -6,10 +6,11 @@ import store from "./redux/store"
 
 import "./index.styles.scss"
 import Header from "./components/Header.component"
+import TransactionItem from "./components/TransactionItem.component"
 
 ReactDOM.render(
   <Provider store={ store }>
-    <Header />
+    <TransactionItem />
   </Provider>
   ,
   document.querySelector("#root")

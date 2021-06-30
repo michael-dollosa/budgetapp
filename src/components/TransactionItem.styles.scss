@@ -1,0 +1,35 @@
+.item-container{
+  width: 97.7%;
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.item-detail{
+  flex-grow: 9;
+
+  >h4{
+    font-weight: 300;
+  }
+  >label{
+    font-size: var(--font-size-label);
+    color: var(--font-color-label);
+  }
+}
+
+.item-cost{
+  flex-grow: 2;
+
+  >h3{
+    font-weight: 300;
+  }
+}
+
+.item-icon{
+  flex-grow: 2;
+  color: var(--color-red);
+}
