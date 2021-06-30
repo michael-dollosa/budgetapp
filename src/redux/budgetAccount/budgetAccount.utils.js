@@ -1,4 +1,4 @@
-const updateIncome = (transactionItem) => {
+const updateIncome = (transactionArray, transactionItem) => {
   if(transactionItem.type === "income") return transactionItem.cost
   else return 0
 }
@@ -6,6 +6,13 @@ const updateExpense = (transactionItem) => {
   if(transactionItem.type === "expense") return transactionItem.cost
   else return 0
 }
+
+const updateBalance = (transactionArray, transactionItem) => {
+  return transactionArray.reduce((accumulator, item) => {
+    return(accumulator + item.cost)
+  }, 0)
+}
+
 
 export const addTransaction = (budgetState, transactionToAdd) => {
   //need to get the current uniqueID to add as identifier for each new account
@@ -19,7 +26,9 @@ export const addTransaction = (budgetState, transactionToAdd) => {
     ? {...account, 
       transactions: [...account.transactions, transactionToAdd],
       totalIncome: account.totalIncome + Number(updateIncome(transactionToAdd)),
-      totalExpense: account.totalExpense + Number(updateExpense(transactionToAdd))
+      totalExpense: account.totalExpense + Number(updateExpense(transactionToAdd)),
+      currentBalance: updateBalance(account.transactions, transactionToAdd)
+      // currentBalance: Number(account.currentBalance) + Number(updateBalance(transactionToAdd))
     }
     //false - return account obj
     : account

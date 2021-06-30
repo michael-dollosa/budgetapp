@@ -27,7 +27,10 @@ const AddAccountForm = ({uniqueID, addBudgetAccount, accountToggleFlag, toggleAc
       name: accountName,
       budget: budget,
       transactions: [],
-      uniqueID: uniqueID
+      uniqueID: uniqueID,
+      currentBalance: budget,
+      totalExpense: 0,
+      totalIncome: 0,
     }
 
     addBudgetAccount(newAccount)

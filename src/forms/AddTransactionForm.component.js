@@ -34,14 +34,15 @@ const AddTransactionForm = ({transactionUniqueID, addTransaction, addTransaction
 
   const submitForm = (event) => {
    
+
    let newTransaction = {
     type: type,
     name: transactionName,
-    cost: cost,
+    cost: type ==="expense" ? -Math.abs(Number(cost)) : Number(cost),
     date: date,
     transactionID: transactionUniqueID
    }
-   console.log(newTransaction)
+   console.log("New Transaction",newTransaction)
    addTransaction(newTransaction)
    toggleTransactionForm(!addTransactionToggle)
    event.preventDefault()
