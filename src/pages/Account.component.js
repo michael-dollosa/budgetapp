@@ -1,31 +1,15 @@
-import { connect } from "react-redux"
-import AddAcountForm from "../forms/AddAccountForm.component"
-import { setBudgetAccount } from "../redux/budgetAccount/budgetAccount.actions"
-const Account = ({ accounts, setBudgetAccount }) => {
-  const handleSetBudgetAccount = (account) => {
-    setBudgetAccount(account)
-  } 
-  return(
-    <div>
-      <h1>My Accounts</h1>
-      <AddAcountForm />
+import TransactionLog from "../components/TransactionLog.component"
+import Header from "../components/Header.component"
+import "./Account.styles.scss"
 
-      {
-        accounts.map((account) => {
-            return(
-              <h3 key={account.uniqueID} onClick={ () => handleSetBudgetAccount(account.uniqueID)}> {account.name} - {account.budget} </h3>)
-        })
-      }
-      
-    </div>
+const Account = () => {
+
+  return(
+    <main className="account-container-main">
+      <Header />
+      <TransactionLog />
+    </main>
   )
 }
 
-const mapStateToProps = state => ({
-  accounts: state.budgetAccount.accounts
-})
-
-const mapDispatchToProps = dispatch => ({
-  setBudgetAccount: currentAccountID => dispatch(setBudgetAccount(currentAccountID))
-})
-export default connect(mapStateToProps, mapDispatchToProps)(Account)
+export default Account

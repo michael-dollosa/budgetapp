@@ -5,9 +5,7 @@ import { Provider } from "react-redux"
 import store from "./redux/store"
 
 import "./index.styles.scss"
-import Header from "./components/Header.component"
-import TransactionItem from "./components/TransactionItem.component"
-import TransactionLog from "./components/TransactionLog.component"
+import Account from "./pages/Account.component"
 
 ReactDOM.render(
   <Provider store={ store }>

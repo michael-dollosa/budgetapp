@@ -5,7 +5,7 @@ import { toggleTransactionForm } from "../redux/modal/modal.actions"
 import { BsX } from "react-icons/bs";
 import "./AddTransactionForm.styles.scss"
 
-const AddTransactionForm = ({uniqueID, addTransaction, addTransactionToggle, toggleTransactionForm}) => {
+const AddTransactionForm = ({transactionUniqueID, addTransaction, addTransactionToggle, toggleTransactionForm}) => {
   const [transactionName, setTransactionName] = useState("")
   const [cost, setCost] = useState(0)
   const [date, setDate] = useState("")
@@ -31,7 +31,8 @@ const AddTransactionForm = ({uniqueID, addTransaction, addTransactionToggle, tog
    let newTransaction = {
     name: transactionName,
     cost: cost,
-    date: date
+    date: date,
+    transactionID: transactionUniqueID
    }
    console.log(newTransaction)
    addTransaction(newTransaction)
@@ -64,7 +65,7 @@ const AddTransactionForm = ({uniqueID, addTransaction, addTransactionToggle, tog
 
 const mapStatetoProps = state => ({
   //need to get the ID of the current account selected
-  uniqueID: state.budgetAccount.currentAccountID,
+  transactionUniqueID: state.budgetAccount.transactionCounter,
   addTransactionToggle: state.formToggle.addTransactionModal
 })
 

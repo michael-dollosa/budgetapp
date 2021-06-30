@@ -12,3 +12,8 @@ export const addTransaction = item => ({
   type: "ADD_TRANSACTION",
   payload: item
 })
+
+export const deleteTransaction = id => ({
+  type: "DELETE_TRANSACTION",
+  payload: id
+})
