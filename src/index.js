@@ -5,10 +5,11 @@ import { Provider } from "react-redux"
 import store from "./redux/store"
 
 import "./index.styles.scss"
+import Header from "./components/Header.component"
 
 ReactDOM.render(
   <Provider store={ store }>
-    <App />
+    <Header />
   </Provider>
   ,
   document.querySelector("#root")
