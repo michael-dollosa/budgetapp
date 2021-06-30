@@ -1,0 +1,36 @@
+.header-main{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-label{
+  color: var(--font-color-label);
+  font-size: var(--font-size-label);
+}
+
+.header-budget{
+  font-size: var(--font-size-heading-large);
+  color: var(--font-color-heading);
+}
+
+.header-title{
+  color: var(--font-color-subheading);
+  font-size: var(--font-size-subheading);
+  margin-bottom: 2rem;
+}
+
+.header-main-stat{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  >*:not(:last-child){
+    margin-bottom: 1.4rem;
+  }
+}
+
+.header-stat{
+  font-weight: 200;
+}

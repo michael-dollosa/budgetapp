@@ -1,6 +1,6 @@
 import { Fragment } from "react"
 import { connect } from "react-redux"
-
+import "./Header.styles.scss"
 const Header = ({account}) => {
 
   let statBody = (account !== undefined) 
@@ -10,10 +10,19 @@ const Header = ({account}) => {
   : null
   console.log("account",account)
   return(
-    <div>
-      <h1>{account.name}</h1>
-      <label>BUDGET</label>
-      <h1>{account.budget}</h1>
+    <div class="header-container">
+      <h1 class="header-title">{account.name}</h1>
+      <div class="header-main">
+        <section>
+          <label class="header-label">BUDGET</label>
+          <h1 class="header-budget">{account.budget}</h1>
+        </section>
+        <section class="header-main-stat">
+          <h4>Initial Balance: <span class="header-stat">30,000</span></h4>
+          <h4>Total Expense: <span class="header-stat">30,000</span></h4>
+          <h4>Generated Income: <span class="header-stat">30,000</span></h4>
+        </section>
+      </div>
     </div>
   )
 }
