@@ -40,7 +40,7 @@
 *::before {
     margin: 0;
     padding: 0;
-    box-sizing: inherit;  /* for all elements to inherit box-sizing attribute in body element css */
+    box-sizing: border-box;  /* for all elements to inherit box-sizing attribute in body element css */
 }
 
 html {

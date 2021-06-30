@@ -1,7 +1,7 @@
 .item-container{
-  width: 97.7%;
+  width: 100%;
   background-color: white;
-  padding: 1.5rem;
+  padding: 1.3rem;
   border-radius: 1rem;
 
   display: flex;
@@ -23,7 +23,7 @@
 
 .item-cost{
   flex-grow: 2;
-
+  width: 10rem;
   >h3{
     font-weight: 300;
   }
@@ -31,5 +31,7 @@
 
 .item-icon{
   flex-grow: 2;
+  display: flex;
+  justify-content: flex-end;
   color: var(--color-red);
 }

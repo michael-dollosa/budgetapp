@@ -10,7 +10,28 @@ const testAccounts = [
   {
     name: "Test Account 2",
     budget: 15000,
-    transactions: [],
+    transactions: [
+      {
+        name: "Transaction 1",
+        cost: 30000,
+        date: "Sample Date"
+      },
+      {
+        name: "Transaction 2",
+        cost: 30000,
+        date: "Sample Date"
+      },
+      {
+        name: "Transaction 3",
+        cost: 1231231231232,
+        date: "Sample Date"
+      },
+      {
+        name: "Transaction 4",
+        cost: 30000,
+        date: "Sample Date"
+      },
+    ],
     uniqueID: 9001
   },
   {

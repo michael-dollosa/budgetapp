@@ -7,10 +7,11 @@ import store from "./redux/store"
 import "./index.styles.scss"
 import Header from "./components/Header.component"
 import TransactionItem from "./components/TransactionItem.component"
+import TransactionLog from "./components/TransactionLog.component"
 
 ReactDOM.render(
   <Provider store={ store }>
-    <TransactionItem />
+    <App />
   </Provider>
   ,
   document.querySelector("#root")

@@ -1,14 +1,19 @@
 import { useState } from "react"
 import { connect } from "react-redux"
 import { addTransaction } from "../redux/budgetAccount/budgetAccount.actions"
+import { toggleTransactionForm } from "../redux/modal/modal.actions"
 import { BsX } from "react-icons/bs";
 import "./AddTransactionForm.styles.scss"
 
-const AddTransactionForm = ({uniqueID, addTransaction}) => {
+const AddTransactionForm = ({uniqueID, addTransaction, addTransactionToggle, toggleTransactionForm}) => {
   const [transactionName, setTransactionName] = useState("")
   const [cost, setCost] = useState(0)
   const [date, setDate] = useState("")
   
+  const handleTransactionFormToggle = () => {
+    toggleTransactionForm(!addTransactionToggle)
+  }
+
   const handleNameChange = (event) => {
     setTransactionName(event.target.value)
   }
@@ -30,7 +35,7 @@ const AddTransactionForm = ({uniqueID, addTransaction}) => {
    }
    console.log(newTransaction)
    addTransaction(newTransaction)
-
+   toggleTransactionForm(!addTransactionToggle)
    event.preventDefault()
   }
   return(
@@ -39,7 +44,7 @@ const AddTransactionForm = ({uniqueID, addTransaction}) => {
         <div className="transaction-form">
           <div className="form-header">
             <h2 className="subheading">Add Transaction</h2>
-            <BsX className="icon-exit"/>
+            <BsX className="icon-exit" onClick={ () => handleTransactionFormToggle() }/>
           </div>
           <form onSubmit={event => submitForm(event)}>
             <label>Name</label>
@@ -59,11 +64,13 @@ const AddTransactionForm = ({uniqueID, addTransaction}) => {
 
 const mapStatetoProps = state => ({
   //need to get the ID of the current account selected
-  uniqueID: state.budgetAccount.currentAccountID
+  uniqueID: state.budgetAccount.currentAccountID,
+  addTransactionToggle: state.formToggle.addTransactionModal
 })
 
 const mapDispatchToProps = dispatch => ({
-  addTransaction: transaction => dispatch(addTransaction(transaction))
+  addTransaction: transaction => dispatch(addTransaction(transaction)),
+  toggleTransactionForm: flag => dispatch(toggleTransactionForm(flag))
 })
 
 export default connect(mapStatetoProps, mapDispatchToProps)(AddTransactionForm)

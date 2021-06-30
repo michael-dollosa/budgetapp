@@ -1,0 +1,28 @@
+.transaction-log-container{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+
+}
+
+.transaction-log-header{
+  width: 100%;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.transaction-icon{
+  font-size: 1.3rem;
+  margin-left: 1.5rem;
+}
+
+.transaction-log-list{
+  width: 100%;
+
+  >*{
+    margin-bottom: 1rem;
+  }
+}
