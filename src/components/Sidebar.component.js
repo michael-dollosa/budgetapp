@@ -15,6 +15,11 @@ const Sidebar = ({ accounts, setBudgetAccount, accountToggleFlag, toggleAccountF
     setBudgetAccount(account)
   } 
 
+  const clearLocalStorage = () => {
+    localStorage.clear();
+    window.location.reload()
+  }
+
   //list of account
   const accountList = accounts.map((account) => {
     return(
@@ -30,6 +35,8 @@ const Sidebar = ({ accounts, setBudgetAccount, accountToggleFlag, toggleAccountF
           { accountList }
           <label>LOGS</label>
           <h4>Account Name</h4>
+          <label>SETTINGS</label>
+          <h4 onClick={ clearLocalStorage }>Clear Local Storage</h4>
         </section>
         <section class="nav-footer">
           <BsPlusCircle class="nav-icon" onClick={() => handleSetToggleForm()}/>
