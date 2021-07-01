@@ -3,6 +3,11 @@ nav {
   width: 20rem;
   height: 100vh;
   position: fixed;
+  transition: .8s;
+  @media only screen and (max-width: 720px) {
+    transition: .8s;
+    display: none;
+  }
 }
 
 nav > main{

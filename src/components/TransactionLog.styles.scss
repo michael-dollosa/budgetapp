@@ -23,6 +23,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 2rem;
+  @media only screen and (max-width: 450px) {
+    margin-bottom: 2rem;
+  }
 }
 
 .transaction-filter{
@@ -35,8 +39,8 @@
   }
 }
 .transaction-log-header{
-  width: 100%;
-  margin-bottom: 2rem;
+  // width: 100%;
+  // margin-bottom: 2rem;
   display: flex;
   align-items: center;
 

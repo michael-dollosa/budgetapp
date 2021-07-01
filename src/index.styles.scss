@@ -33,6 +33,10 @@
   --font-size-subheading: 1.3rem;
   --font-size-heading: 2.5rem;
   --font-size-heading-large: 5rem;
+
+  @media only screen and (max-width: 320px) {
+    --font-size-heading-large: 4rem;
+  }
 }
 
 //reset
@@ -54,7 +58,12 @@ html {
   @media only screen and (max-width: 900px) {
     font-size: 70%;
   }
-
+  @media only screen and (max-width: 450px) {
+    font-size: 50%;
+  }
+  // @media only screen and (max-width: 320px) {
+  //   font-size: 50%;
+  // }
 }
 
 body{

@@ -47,6 +47,7 @@ const TransactionLog = ({transactions, addTransactionToggle, toggleTransactionFo
         <div className="transaction-log-header">
           <h2 className="subheading">Transactions Log</h2>
           <BsFilePlus className="transaction-icon" onClick={ () => handleTransactionFormToggle() }/>
+          
         </div>
         <div className="transaction-filter">
           <label>Filter by Year</label>
