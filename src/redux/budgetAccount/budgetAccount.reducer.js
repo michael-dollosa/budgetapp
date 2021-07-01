@@ -1,4 +1,4 @@
-import { addTransaction, deleteTransaction, deleteAccount, checkAccountIndex } from "./budgetAccount.utils"
+import { addTransaction, deleteTransaction, modifyAccount, deleteAccount, checkAccountIndex } from "./budgetAccount.utils"
 import { testAccounts } from "../../seed"
 
 const INITIAL_STATE = {
@@ -26,6 +26,11 @@ const budgetAccountReducer = (state = INITIAL_STATE, action) => {
         ...state,
         accounts: deleteAccount(state.accounts, action.payload),
         currentAccountID: checkAccountIndex(state.accounts)
+      }
+    case "MODIFY_BUDGET_ACCOUNT":
+      return{
+        ...state,
+        accounts: modifyAccount(state, action.payload)
       }
     case "ADD_TRANSACTION":
       return{

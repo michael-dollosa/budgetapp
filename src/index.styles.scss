@@ -113,6 +113,19 @@ input[type=submit]{
   border-radius: 5px;
 }
 
+button{
+  margin-top: -1.4rem;
+  outline: none;
+  padding: 8px;
+  font: inherit;
+  border: none;
+  width: 95%;
+  background-color: var(--color-red);
+  color: var(--color-button-text);
+  cursor: pointer;
+  border-radius: 5px;
+}
+
 //helper classes
 
 .heading{

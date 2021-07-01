@@ -13,6 +13,11 @@ export const deleteBudgetAccount = accountID => ({
   payload: accountID
 })
 
+export const modifyBudgetAccount = account => ({
+  type: "MODIFY_BUDGET_ACCOUNT",
+  payload: account
+})
+
 export const addTransaction = item => ({
   type: "ADD_TRANSACTION",
   payload: item

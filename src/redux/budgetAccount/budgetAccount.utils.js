@@ -90,6 +90,14 @@ const updateBalance = (transactionArray, transactionItem, actionType, budget) =>
       }, budget)
       return currentBalance
     }
+
+    case "MODIFY_ACCOUNT":{
+      //use reduce to return total Income
+      const currentBalance =  transactionArray.reduce((accumulator, item) => {
+        return(accumulator + item.cost)
+      }, budget)
+      return currentBalance
+    }
     default:
       break;
   }
@@ -144,4 +152,23 @@ export const checkAccountIndex = (accountArray) => {
   return accountArray.length === 0
   ? null
   : accountArray[0].uniqueID
+}
+
+export const modifyAccount = (budgetState, modifiedData) => {
+  //need to get the current uniqueID to add as identifier for each new account
+  const currentAccountID =  budgetState.currentAccountID
+  
+  //return accounts object
+  return budgetState.accounts.map(account =>
+    //check if currentAccountID is same with the iterated account
+    account.uniqueID === currentAccountID
+    //true - return object with account, adding the "new" array of transaction
+    ? {...account, 
+      name: modifiedData.name,
+      budget: modifiedData.budget,
+      currentBalance: updateBalance(account.transactions, null, "MODIFY_ACCOUNT", modifiedData.budget)
+    }
+    //false - return account obj
+    : account
+    )
 }
