@@ -137,7 +137,7 @@ const budgetAccountReducer = (state = INITIAL_STATE, action) => {
     case "ADD_TRANSACTION":
       return{
         ...state,
-        accounts: addTransaction(state, action.payload),
+        accounts: addTransaction(state, action.payload, "ADD_TRANSACTION"),
         transactionCounter: state.transactionCounter + 1
       }
     case "DELETE_TRANSACTION":
