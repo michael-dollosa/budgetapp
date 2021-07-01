@@ -6,8 +6,8 @@ import { BsX } from "react-icons/bs";
 import "./AddAccountForm.styles.scss"
 
 const AddAccountForm = ({uniqueID, addBudgetAccount, accountToggleFlag, toggleAccountForm}) => {
-  const [accountName, setAccountName] = useState("")
-  const [budget, setBudget] = useState(0)
+  const [accountName, setAccountName] = useState(null)
+  const [budget, setBudget] = useState(null)
 
   const handleNameChange = (event) => {
     setAccountName(event.target.value)
@@ -49,10 +49,25 @@ const AddAccountForm = ({uniqueID, addBudgetAccount, accountToggleFlag, toggleAc
           </div>
           <form onSubmit={event => submitForm(event)}>
             <label>Name</label>
-            <input type="text" value={ accountName } onChange={event => handleNameChange(event)} />
+            <input 
+              type="text" 
+              placeholder="Name of your budget area"
+              value={ accountName } 
+              onChange={event => handleNameChange(event)} 
+              required
+            />
             <label>Budget</label>
-            <input type="number" value={ budget } onChange={event => handleBudgetChange(event)} />
-            <input type="submit" value="Add Account"/>
+            <input 
+              type="number" 
+              placeholder="Allocate budget"
+              value={ budget } 
+              onChange={event => handleBudgetChange(event)} 
+              required
+            />
+            <input 
+              type="submit" 
+              value="Add Account"
+            />
           </form>
         </div>
       </section>
