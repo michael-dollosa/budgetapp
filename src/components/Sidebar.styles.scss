@@ -22,22 +22,45 @@ nav > main{
   font-weight: 300;
 }
 
-.nav-section > label {
+.nav-label {
+  display: flex;
+  align-items: center;
+  padding: 1rem 0 1rem 0;
+  // background-color: red;
+  >img{
+    height: 5rem;
+    clip-path: circle(2.5rem at center);
+    margin-right: 1rem;
+  }
+
+  >h1{
+    font-size: var(--font-size-subheading);
+    letter-spacing: 1px;
+  }
+  &:nth-child(1){
+    margin-bottom: 2rem;
+  }
+}
+
+
+.nav-label > label {
   display: block;
   font-size: var(--font-size-label);
   font-weight: 900;
   letter-spacing: 1px;
   color: var(--font-color-label);
-  padding: 2rem 0 1rem 0;
+  margin-left: 1rem;
 }
 
 .nav-section > h4{
   padding: 1rem 0;
   cursor: pointer;
-
+  margin-left: 2rem;
+  text-transform: capitalize;
   &:hover{
     font-weight: 900;
   }
+
 }
 
 .nav-footer{
@@ -53,3 +76,9 @@ nav > main{
   cursor: pointer;
 }
 
+
+.nav-new-account{
+  font-size: 1rem;
+  color: #e2b762;
+  font-weight: 400;
+}

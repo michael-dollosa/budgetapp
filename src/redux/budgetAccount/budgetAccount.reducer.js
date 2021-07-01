@@ -25,7 +25,7 @@ const budgetAccountReducer = (state = INITIAL_STATE, action) => {
       return{
         ...state,
         accounts: deleteAccount(state.accounts, action.payload),
-        currentAccountID: checkAccountIndex(state.accounts)
+        currentAccountID: checkAccountIndex(state.accounts, action.payload)
       }
     case "MODIFY_BUDGET_ACCOUNT":
       return{

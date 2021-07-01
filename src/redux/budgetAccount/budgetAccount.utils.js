@@ -144,14 +144,14 @@ export const deleteTransaction = (budgetState, transactionIdToDelete) => {
 }
 
 export const deleteAccount = (accountArray, accountID) => {
-  console.log("account array", accountArray)
   return accountArray.filter((account) => account.uniqueID !== accountID)
 }
 
-export const checkAccountIndex = (accountArray) => {
+export const checkAccountIndex = (accountArray, accountID) => {
+  const updatedAccounts = accountArray.filter((account) => account.uniqueID !== accountID)
   return accountArray.length === 0
   ? null
-  : accountArray[0].uniqueID
+  : updatedAccounts[0].uniqueID
 }
 
 export const modifyAccount = (budgetState, modifiedData) => {

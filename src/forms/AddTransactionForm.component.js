@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import { connect } from "react-redux"
 import { addTransaction } from "../redux/budgetAccount/budgetAccount.actions"
 import { currentDate } from "../helper/helper"
@@ -13,7 +13,15 @@ const AddTransactionForm = ({transactionUniqueID, addTransaction, addTransaction
   const [cost, setCost] = useState(null)
   const [date, setDate] = useState(currentDate)
   const [type, setType] = useState("expense")
-  
+  const refToParentElement = useRef()
+
+  // useEffect(() => {
+  //   document.body.addEventListener("click", (event) => {
+  //     if(refToParentElement.current.contains(event.target)){
+  //       toggleTransactionForm(!addTransactionToggle)
+  //     }
+  //   })
+  // }, [])
   const handleTransactionFormToggle = () => {
     toggleTransactionForm(!addTransactionToggle)
   }
@@ -58,7 +66,7 @@ const AddTransactionForm = ({transactionUniqueID, addTransaction, addTransaction
   }
 
   return(
-    <div className="modal-container">
+    <div className="modal-container" ref={refToParentElement}>
       <section className="transaction-form-container">
         <div className="transaction-form">
           <div className="form-header">

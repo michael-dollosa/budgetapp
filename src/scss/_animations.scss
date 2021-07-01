@@ -16,15 +16,9 @@
   /* start of animation */
   0% {
       opacity: 0;
-      transform: translateX(-10rem); /* animate in X direction */
+      transform: translateX(-2rem); /* animate in X direction */
   }
 
-  80% {
-      opacity: 1;
-      transform: translateX(1rem); /* animate in X direction */
-  }
-
-  /* end of animation */
   100% {
       opacity: 1;
       transform: translate(0); /* translate 0 means to be in the original position*/

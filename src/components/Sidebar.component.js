@@ -3,12 +3,15 @@ import { connect } from "react-redux"
 import { setBudgetAccount } from "../redux/budgetAccount/budgetAccount.actions"
 import { toggleAccountForm } from "../redux/modal/modal.actions"
 
-import { BsPlusCircle } from "react-icons/bs";
+import { BsPeople, BsPersonPlus, BsGear, BsCodeSlash } from "react-icons/bs";
 
 const Sidebar = ({ accounts, setBudgetAccount, accountToggleFlag, toggleAccountForm }) => {
   //fn to set toggle state
   const handleSetToggleForm = () => {
-    toggleAccountForm(!accountToggleFlag)
+    if(accounts.length < 6) {
+      toggleAccountForm(!accountToggleFlag)
+    }
+    else{ console.log("buy premium")}
   }
   //to set current account to show
   const handleSetBudgetAccount = (account) => {
@@ -26,20 +29,37 @@ const Sidebar = ({ accounts, setBudgetAccount, accountToggleFlag, toggleAccountF
       <h4 key={account.uniqueID} onClick={ () => handleSetBudgetAccount(account.uniqueID)}>{account.name}</h4>)
   })
 
+  const accountBody = (accounts.length === 0)
+  ? <h4 className="nav-new-account" onClick={() => handleSetToggleForm()}>Add Account +</h4>
+  : accountList
+
   return(
     <nav>
       <main>
         <section class="nav-section">
-          <h1>Budget App</h1>
-          <label>ACCOUNTS</label>
-          { accountList }
-          <label>LOGS</label>
+          <div className="nav-label">
+            <img src="./budget-logo.png" alt="" />
+            <h1>Budget App</h1>
+          </div>
+          
+          <div className="nav-label">
+            <BsPeople /> 
+            <label>ACCOUNTS</label>
+          </div>
+          { accountBody }
+          <div className="nav-label">
+            <BsCodeSlash />
+            <label>LOGS</label>
+          </div>
           <h4>Account Name</h4>
-          <label>SETTINGS</label>
+          <div className="nav-label">
+            <BsGear />
+            <label>SETTINGS</label>
+          </div>
           <h4 onClick={ clearLocalStorage }>Clear Local Storage</h4>
         </section>
         <section class="nav-footer">
-          <BsPlusCircle class="nav-icon" onClick={() => handleSetToggleForm()}/>
+          <BsPersonPlus class="nav-icon" onClick={() => handleSetToggleForm()}/>
         </section>
       </main>
     </nav>
