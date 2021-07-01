@@ -32,6 +32,7 @@ const TransactionLog = ({transactions, addTransactionToggle, toggleTransactionFo
 const mapStateToProps = state => {
   //setup first logic to find current account based on uniqueID
   const id = state.budgetAccount.currentAccountID
+  // const id = (state.budgetAccount.accounts.length > 0) ? state.budgetAccount.currentID : null
   const findCurrentAccount = state.budgetAccount.accounts.find(acc => acc.uniqueID === id )
   return({
     transactions: findCurrentAccount.transactions,

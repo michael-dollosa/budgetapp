@@ -18,14 +18,14 @@ const testAccounts = [
         type: "expense",
         name: "Transaction 1",
         cost: 30000,
-        date: "Sample Date",
+        date: new Date(2021, 2, 28),
         transactionID: 90000
       },
       {
         type: "expense",
         name: "Transaction 2",
         cost: 30000,
-        date: "Sample Date",
+        date: new Date(2021, 2, 28),
         transactionID: 90001
         
       },
@@ -33,70 +33,70 @@ const testAccounts = [
         type: "expense",
         name: "Transaction 3",
         cost: 1231231231232,
-        date: "Sample Date",
+        date: new Date(2021, 2, 28),
         transactionID: 90002
       },
       {
         type: "income",
         name: "Transaction 4",
         cost: 30000,
-        date: "Sample Date",
+        date: new Date(2021, 2, 28),
         transactionID: 90003
       },
       {
         type: "income",
         name: "Transaction 1",
         cost: 30000,
-        date: "Sample Date",
+        date: new Date(2021, 2, 28),
         transactionID: 90004
       },
       {
         type: "income",
         name: "Transaction 2",
         cost: 30000,
-        date: "Sample Date",
+        date: new Date(2021, 2, 28),
         transactionID: 90005
       },
       {
         type: "expense",
         name: "Transaction 3",
         cost: 1231231231232,
-        date: "Sample Date",
+        date: new Date(2021, 2, 28),
         transactionID: 90006
       },
       {
         type: "income",
         name: "Transaction 4",
         cost: 30000,
-        date: "Sample Date",
+        date: new Date(2021, 2, 28),
         transactionID: 90007
       },
       {
         type: "income",
         name: "Transaction 1",
         cost: 30000,
-        date: "Sample Date",
+        date: new Date(2021, 2, 28),
         transactionID: 90008
       },
       {
         type: "expense",
         name: "Transaction 2",
         cost: 30000,
-        date: "Sample Date",
+        date: new Date(2021, 2, 28),
         transactionID: 90009
       },
       {
         type: "income",
         name: "Transaction 3",
         cost: 1231231231232,
-        date: "Sample Date",
+        date: new Date(2021, 2, 28),
         transactionID: 90010
       },
       {
         type: "income",
         name: "Transaction 4",
         cost: 30000,
-        date: "Sample Date",
+        date: new Date(2021, 2, 28),
         transactionID: 90011
       },
     ],
@@ -127,6 +127,7 @@ const budgetAccountReducer = (state = INITIAL_STATE, action) => {
       return{
         ...state,
         accounts: [...state.accounts, action.payload],
+        currentAccountID: action.payload.uniqueID,
         counter: state.counter + 1
       }
     case "SET_BUDGET_ACCOUNT":
@@ -137,7 +138,7 @@ const budgetAccountReducer = (state = INITIAL_STATE, action) => {
     case "ADD_TRANSACTION":
       return{
         ...state,
-        accounts: addTransaction(state, action.payload, "ADD_TRANSACTION"),
+        accounts: addTransaction(state, action.payload),
         transactionCounter: state.transactionCounter + 1
       }
     case "DELETE_TRANSACTION":

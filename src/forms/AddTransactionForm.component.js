@@ -39,7 +39,7 @@ const AddTransactionForm = ({transactionUniqueID, addTransaction, addTransaction
     type: type,
     name: transactionName,
     cost: type ==="expense" ? -Math.abs(Number(cost)) : Number(cost),
-    date: date,
+    date: new Date(date),
     transactionID: transactionUniqueID
    }
    console.log("New Transaction",newTransaction)
@@ -65,7 +65,7 @@ const AddTransactionForm = ({transactionUniqueID, addTransaction, addTransaction
             <label>Cost</label>
             <input type="number" value={ cost } onChange={event => handleCostChange(event)} />
             <label>Date</label>
-            <input type="date" onChange={event => handleDateChange(event)}/>
+            <input type="date" value={ date } onChange={event => handleDateChange(event)}/>
             <input type="submit" value="Add Transaction"/>
             </form>
         </div>

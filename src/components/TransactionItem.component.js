@@ -7,6 +7,10 @@ import { BsTrash } from "react-icons/bs";
 const TransactionItem = ({key, transaction, deleteTransaction}) => {
   const {type, name, cost, date, transactionID} = transaction
 
+  const year = date.getFullYear()
+  const day = date.getDate()
+  const month = date.toLocaleString("default", { month: "long" })
+
   const handleDeleteTransaction = (id) => {
     deleteTransaction(id)
   }
@@ -16,7 +20,7 @@ const TransactionItem = ({key, transaction, deleteTransaction}) => {
     <div className={`item-container`}>
       <section className="item-detail">
         <h4>{ name }</h4>
-        <label>{ date }</label>
+        <label>{ `${month} ${day}, ${year}` }</label>
       </section>
       <section className="item-cost">
         <h3

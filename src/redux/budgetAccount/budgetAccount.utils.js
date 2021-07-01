@@ -106,9 +106,7 @@ export const addTransaction = (budgetState, transactionToAdd) => {
     //true - return object with account, adding the "new" array of transaction
     ? {...account, 
       transactions: [...account.transactions, transactionToAdd],
-      // totalIncome: account.totalIncome + Number(updateIncome(transactionToAdd)),
       totalIncome: updateIncome(account.transactions, transactionToAdd, "ADD_TRANSACTION"),
-      // totalExpense: account.totalExpense + Number(updateExpense(transactionToAdd)),
       totalExpense: updateExpense(account.transactions, transactionToAdd, "ADD_TRANSACTION"),
       currentBalance: updateBalance(account.transactions, transactionToAdd, "ADD_TRANSACTION", account.budget)
       // currentBalance: Number(account.currentBalance) + Number(updateBalance(transactionToAdd))
