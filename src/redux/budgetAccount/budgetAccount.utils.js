@@ -1,4 +1,4 @@
-const updateIncome = (transactionArray, transactionItem) => {
+const updateIncome = (transactionItem) => {
   if(transactionItem.type === "income") return transactionItem.cost
   else return 0
 }
@@ -7,10 +7,11 @@ const updateExpense = (transactionItem) => {
   else return 0
 }
 
-const updateBalance = (transactionArray, transactionItem) => {
-  return transactionArray.reduce((accumulator, item) => {
+const updateBalance = (transactionArray, transactionItem, currentBalance) => {
+  const totalExpense =  transactionArray.reduce((accumulator, item) => {
     return(accumulator + item.cost)
-  }, 0)
+  }, transactionItem.cost)
+  return Number(currentBalance) + totalExpense
 }
 
 
@@ -27,7 +28,7 @@ export const addTransaction = (budgetState, transactionToAdd) => {
       transactions: [...account.transactions, transactionToAdd],
       totalIncome: account.totalIncome + Number(updateIncome(transactionToAdd)),
       totalExpense: account.totalExpense + Number(updateExpense(transactionToAdd)),
-      currentBalance: updateBalance(account.transactions, transactionToAdd)
+      currentBalance: updateBalance(account.transactions, transactionToAdd, account.currentBalance)
       // currentBalance: Number(account.currentBalance) + Number(updateBalance(transactionToAdd))
     }
     //false - return account obj
