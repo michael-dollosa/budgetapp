@@ -33,13 +33,18 @@ const AddTransactionForm = ({transactionUniqueID, addTransaction, addTransaction
   }
 
   const submitForm = (event) => {
-   
+   let parseDate = new Date(date)
+   let stringDate = {
+     year: parseDate.getFullYear(),
+     day: parseDate.getDate(),
+     month: parseDate.toLocaleString("default", { month: "long" })
+   }
 
    let newTransaction = {
     type: type,
     name: transactionName,
     cost: type ==="expense" ? -Math.abs(Number(cost)) : Number(cost),
-    date: new Date(date),
+    date: stringDate,
     transactionID: transactionUniqueID
    }
    console.log("New Transaction",newTransaction)
@@ -47,6 +52,7 @@ const AddTransactionForm = ({transactionUniqueID, addTransaction, addTransaction
    toggleTransactionForm(!addTransactionToggle)
    event.preventDefault()
   }
+  
   return(
     <div className="modal-container">
       <section className="transaction-form-container">

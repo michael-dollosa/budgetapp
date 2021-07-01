@@ -5,11 +5,11 @@ import { formatCost } from "../helper/helper";
 import { BsTrash } from "react-icons/bs";
 
 const TransactionItem = ({key, transaction, deleteTransaction}) => {
-  const {type, name, cost, date, transactionID} = transaction
+  const {type, name, cost, date:{month, day, year}, transactionID} = transaction
 
-  const year = date.getFullYear()
-  const day = date.getDate()
-  const month = date.toLocaleString("default", { month: "long" })
+  // const year = date.getFullYear()
+  // const day = date.getDate()
+  // const month = date.toLocaleString("default", { month: "long" })
 
   const handleDeleteTransaction = (id) => {
     deleteTransaction(id)

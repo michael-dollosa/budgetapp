@@ -116,8 +116,8 @@ const testAccounts = [
   },
 ]
 const INITIAL_STATE = {
-  currentAccountID: 9001,
-  accounts: testAccounts,
+  currentAccountID: null,
+  accounts: [],
   counter: 0,
   transactionCounter: 0
 }
