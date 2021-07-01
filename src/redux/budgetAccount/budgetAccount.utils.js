@@ -68,15 +68,16 @@ const updateExpense = (transactionArray, transactionItem, actionType) => {
   }
 }
 
-const updateBalance2 = (transactionArray, transactionItem, actionType) => {
+const updateBalance = (transactionArray, transactionItem, actionType, budget) => {
   switch (actionType) {
     case "ADD_TRANSACTION":{
+      console.log("budget", budget)
       //add first the new item to the current array of transaction
       const transactions = tempAddTransactionToArray(transactionArray, transactionItem)
       //use reduce to return current Balance
       const currentBalance =  transactions.reduce((accumulator, item) => {
         return(accumulator + item.cost)
-      }, 0)
+      }, budget)
       return currentBalance
     }
 
@@ -86,7 +87,7 @@ const updateBalance2 = (transactionArray, transactionItem, actionType) => {
       //use reduce to return total Income
       const currentBalance =  transactions.reduce((accumulator, item) => {
         return(accumulator + item.cost)
-      }, 0)
+      }, budget)
       return currentBalance
     }
     default:
@@ -94,18 +95,10 @@ const updateBalance2 = (transactionArray, transactionItem, actionType) => {
   }
 }
 
-const updateBalance = (transactionArray, transactionItem, currentBalance) => {
-  const totalExpense =  transactionArray.reduce((accumulator, item) => {
-    return(accumulator + item.cost)
-  }, transactionItem.cost)
-  return totalExpense
-}
-
-
 export const addTransaction = (budgetState, transactionToAdd) => {
   //need to get the current uniqueID to add as identifier for each new account
   const currentAccountID =  budgetState.currentAccountID
-
+  
   //return accounts object
   return budgetState.accounts.map(account =>
     //check if currentAccountID is same with the iterated account
@@ -117,7 +110,7 @@ export const addTransaction = (budgetState, transactionToAdd) => {
       totalIncome: updateIncome(account.transactions, transactionToAdd, "ADD_TRANSACTION"),
       // totalExpense: account.totalExpense + Number(updateExpense(transactionToAdd)),
       totalExpense: updateExpense(account.transactions, transactionToAdd, "ADD_TRANSACTION"),
-      currentBalance: updateBalance2(account.transactions, transactionToAdd, "ADD_TRANSACTION")
+      currentBalance: updateBalance(account.transactions, transactionToAdd, "ADD_TRANSACTION", account.budget)
       // currentBalance: Number(account.currentBalance) + Number(updateBalance(transactionToAdd))
     }
     //false - return account obj
@@ -128,7 +121,6 @@ export const addTransaction = (budgetState, transactionToAdd) => {
 export const deleteTransaction = (budgetState, transactionIdToDelete) => {
   //need to get the current uniqueID to add as identifier for each new account
   const currentAccountID =  budgetState.currentAccountID
-
   //return accounts object
   return budgetState.accounts.map(account =>
     //check if currentAccountID is same with the iterated account
@@ -138,7 +130,7 @@ export const deleteTransaction = (budgetState, transactionIdToDelete) => {
       transactions: removeItemFromArray(account.transactions, transactionIdToDelete),
       totalIncome: updateIncome(account.transactions, transactionIdToDelete, "DELETE_TRANSACTION"),
       totalExpense: updateExpense(account.transactions, transactionIdToDelete, "DELETE_TRANSACTION"),
-      currentBalance: updateBalance2(account.transactions, transactionIdToDelete, "DELETE_TRANSACTION")
+      currentBalance: updateBalance(account.transactions, transactionIdToDelete, "DELETE_TRANSACTION", account.budget)
     }
     //false - return account obj
     : account

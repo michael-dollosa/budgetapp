@@ -25,10 +25,10 @@ const AddAccountForm = ({uniqueID, addBudgetAccount, accountToggleFlag, toggleAc
   const submitForm = (event) => {
     let newAccount = {
       name: accountName,
-      budget: budget,
+      budget: Math.abs(Number(budget)),
       transactions: [],
       uniqueID: uniqueID,
-      currentBalance: budget,
+      currentBalance: Math.abs(Number(budget)),
       totalExpense: 0,
       totalIncome: 0,
     }
