@@ -1,6 +1,7 @@
 const INITIAL_STATE = {
   addAccountModal: false,
-  addTransactionModal: false
+  addTransactionModal: false,
+  editAccountModal: false
 }
 const modalReducer = (state = INITIAL_STATE, action) => {
   switch(action.type) {
@@ -8,6 +9,11 @@ const modalReducer = (state = INITIAL_STATE, action) => {
       return{
         ...state,
         addAccountModal: action.payload
+      }
+    case "TOGGLE_EDIT_ACCOUNT_FORM":
+      return{
+        ...state,
+        editAccountModal: action.payload
       }
     case "TOGGLE_TRANSACTION_FORM":
       return{

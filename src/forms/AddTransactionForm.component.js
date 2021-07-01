@@ -1,14 +1,17 @@
 import { useState } from "react"
 import { connect } from "react-redux"
 import { addTransaction } from "../redux/budgetAccount/budgetAccount.actions"
+import { currentDate } from "../helper/helper"
 import { toggleTransactionForm } from "../redux/modal/modal.actions"
 import { BsX } from "react-icons/bs";
 import "./AddTransactionForm.styles.scss"
 
 const AddTransactionForm = ({transactionUniqueID, addTransaction, addTransactionToggle, toggleTransactionForm}) => {
-  const [transactionName, setTransactionName] = useState("")
-  const [cost, setCost] = useState(0)
-  const [date, setDate] = useState("")
+  
+  
+  const [transactionName, setTransactionName] = useState(null)
+  const [cost, setCost] = useState(null)
+  const [date, setDate] = useState(currentDate)
   const [type, setType] = useState("expense")
   
   const handleTransactionFormToggle = () => {
@@ -47,12 +50,13 @@ const AddTransactionForm = ({transactionUniqueID, addTransaction, addTransaction
     date: stringDate,
     transactionID: transactionUniqueID
    }
+
    console.log("New Transaction",newTransaction)
    addTransaction(newTransaction)
    toggleTransactionForm(!addTransactionToggle)
    event.preventDefault()
   }
-  
+
   return(
     <div className="modal-container">
       <section className="transaction-form-container">
@@ -67,11 +71,28 @@ const AddTransactionForm = ({transactionUniqueID, addTransaction, addTransaction
               <option value="income" >Income</option>
             </select>
             <label>Name</label>
-            <input type="text" value={ transactionName } onChange={event => handleNameChange(event)} />
+            <input 
+              placeholder="Name of transaction"
+              type="text" 
+              value={ transactionName } 
+              onChange={event => handleNameChange(event)} 
+              required
+            />
             <label>Cost</label>
-            <input type="number" value={ cost } onChange={event => handleCostChange(event)} />
+            <input 
+              placeholder="Price of transaction"
+              type="number" 
+              value={ cost } 
+              onChange={event => handleCostChange(event)} 
+              required
+            />
             <label>Date</label>
-            <input type="date" value={ date } onChange={event => handleDateChange(event)}/>
+            <input 
+              type="date"
+              value={ date } 
+              onChange={event => handleDateChange(event)}
+              required
+            />
             <input type="submit" value="Add Transaction"/>
             </form>
         </div>

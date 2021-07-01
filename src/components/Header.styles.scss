@@ -4,6 +4,18 @@
   // justify-content: space-between;
 }
 
+.header-name{
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.header-icon{
+  font-size: 1.5rem;
+  margin-left: 1.5rem;
+  cursor: pointer;
+}
+
 .header-label{
   color: var(--font-color-label);
   font-size: var(--font-size-label);
@@ -19,7 +31,6 @@
 .header-title{
   color: var(--font-color-subheading);
   font-size: var(--font-size-heading);
-  margin-bottom: 2rem;
 }
 
 .header-main-stat{
@@ -31,6 +42,13 @@
   >*:not(:last-child){
     margin-bottom: 1.4rem;
   }
+
+  >h4{
+    font-weight: 300;
+    >span{
+      font-weight: 500;
+    }
+  }
 }
 
 .header-main-title{
@@ -39,4 +57,16 @@
 
 .header-stat{
   font-weight: 200;
+
+  &.budget{
+    color: var(--font-color-heading);
+  }
+
+  &.expense{
+    color: var(--color-red);
+  }
+
+  &.income{
+    color: var(--color-green)
+  }
 }
