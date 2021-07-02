@@ -9,7 +9,7 @@
 
 .transaction-item-container{
   transition: .5s;
-  animation-name: moveInBottom;
+  animation-name: moveInTop;
   animation-duration: .5s;
   animation-timing-function: ease-out;
 
@@ -33,9 +33,13 @@
   width:40%;
   display: flex;
   align-items: center;
-  // justify-content: space-between;
+  justify-content: flex-end;
   >label{
-    width: 12rem;
+    width: 7rem;
+    white-space: nowrap;
+  }
+  >select{
+    width: 10rem;
   }
 }
 .transaction-log-header{

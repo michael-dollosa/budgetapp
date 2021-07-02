@@ -15,13 +15,6 @@ const AddTransactionForm = ({transactionUniqueID, addTransaction, addTransaction
   const [type, setType] = useState("expense")
   const refToParentElement = useRef()
 
-  // useEffect(() => {
-  //   document.body.addEventListener("click", (event) => {
-  //     if(refToParentElement.current.contains(event.target)){
-  //       toggleTransactionForm(!addTransactionToggle)
-  //     }
-  //   })
-  // }, [])
   const handleTransactionFormToggle = () => {
     toggleTransactionForm(!addTransactionToggle)
   }
@@ -92,6 +85,7 @@ const AddTransactionForm = ({transactionUniqueID, addTransaction, addTransaction
               type="number" 
               value={ cost } 
               onChange={event => handleCostChange(event)} 
+              max="10000000"
               required
             />
             <label>Date</label>

@@ -1,12 +1,12 @@
 nav {
+  z-index: 1;
   background-color: var(--color-primary);
   width: 20rem;
   height: 100vh;
   position: fixed;
-  transition: .8s;
   @media only screen and (max-width: 720px) {
-    transition: .8s;
     display: none;
+    width: 100%;
   }
 }
 
@@ -17,6 +17,14 @@ nav > main{
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
+  @media only screen and (max-width: 720px) {
+    align-items: center;
+    padding: 4rem 2.5rem 2.5rem 0;
+  }
+  @media only screen and (max-width: 320px) {
+    align-items: flex-start;
+    padding: 4rem 2.5rem 2.5rem 10rem;
+  }
 }
 
 .nav-section{
@@ -66,6 +74,10 @@ nav > main{
     font-weight: 900;
   }
 
+  &.selected{
+    font-weight: 900;
+  }
+
 }
 
 .nav-footer{
@@ -86,4 +98,23 @@ nav > main{
   font-size: 1rem;
   color: #e2b762;
   font-weight: 400;
+}
+
+
+.sidebar-toggle-icon{
+  display: none;
+  z-index: 3;
+
+  @media only screen and (max-width: 720px) {
+    display: block;
+    position: absolute;
+    top: 5%;
+    right: 5%;
+  }
+
+  >.toggle-icon{
+    font-size: 1.5rem;
+    // color: white;
+    // background-color: var(--color-primary);
+  }
 }

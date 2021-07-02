@@ -78,4 +78,9 @@
   &.income{
     color: var(--color-green)
   }
+
+  @media only screen and (max-width: 320px) {
+    font-size: var(--font-size-label);
+  }
+
 }

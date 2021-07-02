@@ -1,7 +1,8 @@
 const INITIAL_STATE = {
   addAccountModal: false,
   addTransactionModal: false,
-  editAccountModal: false
+  editAccountModal: false,
+  sidebarModal: false,
 }
 const modalReducer = (state = INITIAL_STATE, action) => {
   switch(action.type) {
@@ -19,6 +20,11 @@ const modalReducer = (state = INITIAL_STATE, action) => {
       return{
         ...state,
         addTransactionModal: action.payload
+      }
+    case "TOGGLE_SIDEBAR":
+      return{
+        ...state,
+        sidebarModal: action.payload
       }
     default:
       return state

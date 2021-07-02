@@ -54,6 +54,7 @@ const AddAccountForm = ({uniqueID, addBudgetAccount, accountToggleFlag, toggleAc
               placeholder="Name of your budget area"
               value={ accountName } 
               onChange={event => handleNameChange(event)} 
+              maxlength="20"
               required
             />
             <label>Budget</label>
@@ -62,6 +63,7 @@ const AddAccountForm = ({uniqueID, addBudgetAccount, accountToggleFlag, toggleAc
               placeholder="Allocate budget"
               value={ budget } 
               onChange={event => handleBudgetChange(event)} 
+              max="10000000"
               required
             />
             <input 

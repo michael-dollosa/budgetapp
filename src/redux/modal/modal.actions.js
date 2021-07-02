@@ -13,5 +13,9 @@ export const toggleTransactionForm = flag => ({
   payload: flag
 })
 
+export const toggleSidebar = flag => ({
+  type: "TOGGLE_SIDEBAR",
+  payload: flag
+})
 
 

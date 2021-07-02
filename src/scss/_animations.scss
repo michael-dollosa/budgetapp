@@ -12,6 +12,21 @@
       transform: translate(0); /* translate 0 means to be in the original position*/
   }
 }
+
+@keyframes moveInTop {
+  /* start of animation */
+  0% {
+      opacity: 0;
+      transform: translateY(-5rem); /* animate in X direction */
+  }
+
+  /* end of animation */
+  100% {
+      opacity: 1;
+      transform: translate(0); /* translate 0 means to be in the original position*/
+  }
+}
+
 @keyframes moveInLeft {
   /* start of animation */
   0% {
