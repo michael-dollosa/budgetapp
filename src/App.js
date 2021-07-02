@@ -20,8 +20,8 @@ const App = ({ accountToggleFlag, transactionToggleFlag, editAccountToggleFlag, 
         <Sidebar />
         <section className="container-account">
           <Switch>
-            <Route path="/" exact component={Account} />
-            <Route path="/notes" component={ReleaseNotes} />
+            <Route path="/" exact component={ReleaseNotes} />
+            <Route path="/account/*" component={Account} />
           </Switch>
         </section>
       </main>

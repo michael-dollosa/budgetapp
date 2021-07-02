@@ -62,9 +62,8 @@ const Sidebar = ({ currentID, accounts, setBudgetAccount, accountToggleFlag, tog
         <h4 
           key={account.uniqueID} 
           onClick={ () => handleAccountItemClick(account.uniqueID)}
-          // className = {account.uniqueID === currentID ? "selected" : null}
         >
-          <NavLink to="/" exact style={{ color: 'inherit', textDecoration: 'none'}} activeClassName="selected">
+          <NavLink to={`/account/${account.uniqueID}`} exact style={{ color: 'inherit', textDecoration: 'none'}} activeClassName="selected">
           {account.name}
           </NavLink>
         </h4>
@@ -111,7 +110,7 @@ const Sidebar = ({ currentID, accounts, setBudgetAccount, accountToggleFlag, tog
               <label>NOTES</label>
             </div>
             <h4>
-              <NavLink to="/notes" exact style={{ color: 'inherit', textDecoration: 'none'}} activeClassName="selected">
+              <NavLink to="/" exact style={{ color: 'inherit', textDecoration: 'none'}} activeClassName="selected">
                 Release Notes
               </NavLink>
             </h4>
