@@ -69,6 +69,11 @@ const Sidebar = ({ currentID, accounts, setBudgetAccount, accountToggleFlag, tog
     )
   })
 
+  const accountListUpdated = [
+    {accountList},
+    <h4 className="nav-new-account" onClick={() => handleSetToggleForm()}>Add Account +</h4>
+  ]
+
   const handleToggleSidebar = () => {
     toggleSidebar(!toggleSidebarFlag)
   }
@@ -79,12 +84,6 @@ const Sidebar = ({ currentID, accounts, setBudgetAccount, accountToggleFlag, tog
     ? ""
     : toggleSidebarFlag ? "" : "display-none"
   
-  const accountBody = (accounts.length === 0)
-  ? <h4 className="nav-new-account" onClick={() => handleSetToggleForm()}>Add Account +</h4>
-  : accountList
-
-  
-
   return(
     <section className="sidebar-toggle">
       <div className="sidebar-toggle-icon">
@@ -103,7 +102,13 @@ const Sidebar = ({ currentID, accounts, setBudgetAccount, accountToggleFlag, tog
               <BsPeople /> 
               <label>ACCOUNTS</label>
             </div>
-            { accountBody }
+            { accountList }
+            {
+              accounts.length === 6
+              ? null
+              : <h4 className="nav-new-account" onClick={() => handleSetToggleForm()}>Add Account +</h4>
+            }
+            
             <div className="nav-label">
               <BsCodeSlash />
               <label>LOGS</label>
@@ -114,9 +119,6 @@ const Sidebar = ({ currentID, accounts, setBudgetAccount, accountToggleFlag, tog
               <label>SETTINGS</label>
             </div>
             <h4 onClick={ clearLocalStorage }>Clear Local Storage</h4>
-          </section>
-          <section className="nav-footer">
-            <BsPersonPlus className="nav-icon" onClick={() => handleSetToggleForm()}/>
           </section>
         </main>
       </nav>
