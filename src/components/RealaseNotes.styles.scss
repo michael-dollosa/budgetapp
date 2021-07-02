@@ -1,0 +1,22 @@
+.releasenotes-container{
+
+  >h1{
+    color: var(--color-primary);
+    font-size: var(--font-size-heading);
+    margin-bottom: 2rem;
+  }
+
+  >h3{
+    color: var(--color-secondary-dark);
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+  }
+
+  p{
+    display: flex;
+    align-items: flex-start;
+    font-size: var(--font-size-default);
+    list-style-type: circle;
+    margin-bottom: .5rem;
+  }
+}

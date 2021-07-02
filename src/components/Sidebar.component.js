@@ -111,9 +111,9 @@ const Sidebar = ({ currentID, accounts, setBudgetAccount, accountToggleFlag, tog
             
             <div className="nav-label">
               <BsCodeSlash />
-              <label>LOGS</label>
+              <label>NOTES</label>
             </div>
-            <h4>Account Name</h4>
+            <h4>Developer Notes</h4>
             <div className="nav-label">
               <BsGear />
               <label>SETTINGS</label>

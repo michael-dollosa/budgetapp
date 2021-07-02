@@ -2,6 +2,7 @@ import TransactionLog from "../components/TransactionLog.component"
 import { Fragment } from "react"
 import { connect } from "react-redux"
 import Header from "../components/Header.component"
+import ReleaseNotes from "../components/ReleaseNotes.component"
 import "./Account.styles.scss"
 
 const Account = ({ initalCheck }) => {
@@ -12,7 +13,10 @@ const Account = ({ initalCheck }) => {
       <Header />
       <TransactionLog />
     </Fragment>
-  : <h1>Null</h1>
+  : 
+    <Fragment>
+      <ReleaseNotes />
+    </Fragment>
   return(
     <main className="account-container-main">
       
