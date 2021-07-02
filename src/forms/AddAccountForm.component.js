@@ -35,7 +35,7 @@ const AddAccountForm = ({uniqueID, addBudgetAccount, accountToggleFlag, toggleAc
     
     addBudgetAccount(newAccount)
     toggleAccountForm(!accountToggleFlag)
-    toggleSidebar(true)
+    toggleSidebar(false)
     setAccountName("")
     setBudget(0)
     event.preventDefault()

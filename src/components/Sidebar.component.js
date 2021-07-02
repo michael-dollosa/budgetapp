@@ -23,6 +23,13 @@ const Sidebar = ({ currentID, accounts, setBudgetAccount, accountToggleFlag, tog
     //setup on mount
   },[]);
 
+  useEffect(() => {
+    if(currentBrowserWidth > mobilebreakPoint) {
+      toggleSidebar(false)
+    }
+    // console.log("flag")
+  }, [currentBrowserWidth])
+
   //fn to set toggle state
   const handleSetToggleForm = () => {
     if(accounts.length < 6) {
@@ -40,11 +47,12 @@ const Sidebar = ({ currentID, accounts, setBudgetAccount, accountToggleFlag, tog
   //
   const handleAccountItemClick = (account) => {
     handleSetBudgetAccount(account)
-    toggleSidebar(true)
+    toggleSidebar(false)
   }
 
   const clearLocalStorage = () => {
     localStorage.clear();
+    toggleSidebar(false)
     window.location.reload()
   }
 
@@ -69,7 +77,7 @@ const Sidebar = ({ currentID, accounts, setBudgetAccount, accountToggleFlag, tog
   const sideBarHiddenFlagClass = 
     currentBrowserWidth > mobilebreakPoint 
     ? ""
-    : toggleSidebarFlag ? "display-none" : ""
+    : toggleSidebarFlag ? "" : "display-none"
   
   const accountBody = (accounts.length === 0)
   ? <h4 className="nav-new-account" onClick={() => handleSetToggleForm()}>Add Account +</h4>

@@ -19,9 +19,8 @@ const TransactionLog = ({transactions, addTransactionToggle, toggleTransactionFo
         <div className="transaction-item-container">
           <TransactionItem key={index} transaction={transaction} />
         </div>
-        
       )
-      : null
+      : <div key={index}></div>
   })
 
   const showTransactions = filter === "All" ? transactionList : transactionFilteredList
