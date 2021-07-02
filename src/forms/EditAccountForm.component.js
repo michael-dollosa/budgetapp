@@ -26,6 +26,7 @@ const EditAccountForm = ({currentAccount, currentAccountID, deleteBudgetAccount,
 
   const handleDeleteAccount = (id) => {
     deleteBudgetAccount(id)
+    window.location.href=`/account/${currentAccountID}`
     toggleEditAccountForm(!editAccountToggleFlag)
   }
 

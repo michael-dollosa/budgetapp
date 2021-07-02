@@ -35,7 +35,7 @@ const AddAccountForm = ({ uniqueID, addBudgetAccount, accountToggleFlag, toggleA
     
     addBudgetAccount(newAccount)
     toggleAccountForm(!accountToggleFlag)
-    window.location.href="/"
+    window.location.href=`/account/${uniqueID}`
     toggleSidebar(false)
     setAccountName("")
     setBudget(0)

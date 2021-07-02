@@ -151,7 +151,6 @@ export const checkAccountIndex = (accountArray, accountID) => {
   if(accountArray.length === 1){
     return null
   }
-  console.log(accountArray)
   const updatedAccounts = accountArray.filter((account) => account.uniqueID !== accountID)
   return updatedAccounts[0].uniqueID
 }

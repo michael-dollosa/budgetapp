@@ -35,10 +35,20 @@ nav > main{
 
 .nav-section{
   color: var(--font-color-white);
+  & h4{
+    padding: 1rem 0;
+    cursor: pointer;
+    margin-left: 2rem;
+    text-transform: capitalize;
+    // &:hover{
+    //   font-weight: 900;
+    // }
+  }
 }
 
 .nav-section > * {
   font-weight: 300;
+  
 }
 
 .nav-label {
@@ -71,15 +81,7 @@ nav > main{
   margin-left: 1rem;
 }
 
-.nav-section > h4{
-  padding: 1rem 0;
-  cursor: pointer;
-  margin-left: 2rem;
-  text-transform: capitalize;
-  &:hover{
-    font-weight: 900;
-  }
-}
+
 
 .selected{
   font-weight: 900;

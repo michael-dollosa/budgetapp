@@ -14,7 +14,7 @@ const Account = ({ initalCheck }) => {
       <Header />
       <TransactionLog />
     </Fragment>
-  : <Redirect to="/notes" />
+  : <Redirect to="/" />
   return(
     <main className="account-container-main">
       

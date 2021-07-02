@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom"
 import { connect } from "react-redux"
 import { setBudgetAccount } from "../redux/budgetAccount/budgetAccount.actions"
 import { toggleAccountForm, toggleSidebar } from "../redux/modal/modal.actions"
-
+// import logo from "../../public/budget-logo.png"
 import { BsPeople, BsGear, BsCodeSlash, BsLayoutTextSidebarReverse } from "react-icons/bs";
 
 const Sidebar = ({ currentID, accounts, setBudgetAccount, accountToggleFlag, toggleSidebarFlag, toggleSidebar, toggleAccountForm }) => {
@@ -60,10 +60,10 @@ const Sidebar = ({ currentID, accounts, setBudgetAccount, accountToggleFlag, tog
   const accountList = accounts.map((account) => {
     return(
         <h4 
-          key={account.uniqueID} 
+          key={account.uniqueID}
           onClick={ () => handleAccountItemClick(account.uniqueID)}
         >
-          <NavLink to={`/account/${account.uniqueID}`} exact style={{ color: 'inherit', textDecoration: 'none'}} activeClassName="selected">
+          <NavLink to={`/account/${account.uniqueID}`} exact style={{ color: 'inherit', textDecoration: 'none'}} activeClassName="selected" >
           {account.name}
           </NavLink>
         </h4>
@@ -90,11 +90,11 @@ const Sidebar = ({ currentID, accounts, setBudgetAccount, accountToggleFlag, tog
         <main>
           <section className="nav-section">
             <div className="nav-label">
-              <img src="./budget-logo.png" alt="" />
+              <img src={window.location.origin + "/budget-logo.png"} alt="" />
               <h1>Budget App</h1>
             </div>
             
-          <div className="nav-label">
+            <div className="nav-label">
               <BsPeople /> 
               <label>ACCOUNTS</label>
             </div>
