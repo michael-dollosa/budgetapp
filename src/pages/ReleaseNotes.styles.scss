@@ -1,5 +1,9 @@
 .releasenotes-container{
-
+  width: 100%;
+  padding: 6rem;
+  animation-name: moveIn;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
   >h1{
     color: var(--color-primary);
     font-size: var(--font-size-heading);
@@ -18,5 +22,11 @@
     font-size: var(--font-size-default);
     list-style-type: circle;
     margin-bottom: .5rem;
+
+    >span{
+      color: var(--color-primary);
+      font-weight: 500;
+      margin: 0 5px 0 5px;
+    }
   }
 }

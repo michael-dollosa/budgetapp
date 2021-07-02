@@ -1,26 +1,32 @@
 import Account from "./pages/Account.component";
 import Sidebar from "./components/Sidebar.component"
+import ReleaseNotes from "./pages/ReleaseNotes.component";
 import { connect } from "react-redux"
-import "./App.styles.scss"
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import { setBudgetAccount } from "./redux/budgetAccount/budgetAccount.actions"
+
 import AddAccountFormComponent from "./forms/AddAccountForm.component";
 import AddTransactionFormComponent from "./forms/AddTransactionForm.component";
 import EditAccountFormComponent from "./forms/EditAccountForm.component";
-
-const App = ({ accountToggleFlag, transactionToggleFlag, editAccountToggleFlag, accounts }) => {
-
+import "./App.styles.scss"
+const App = ({ accountToggleFlag, transactionToggleFlag, editAccountToggleFlag, setBudgetAccount }) => {
+  
   return (
-  <main className="container-main">
-    {accountToggleFlag ? <AddAccountFormComponent /> : null }
-    {transactionToggleFlag ? <AddTransactionFormComponent /> : null }
-    {editAccountToggleFlag ? <EditAccountFormComponent /> : null }
-    <Sidebar />
-    <section className="container-account">
-      <Account />
-    </section>
-
-    
-
-  </main>
+    <Router>
+      <main className="container-main">
+        {accountToggleFlag ? <AddAccountFormComponent /> : null }
+        {transactionToggleFlag ? <AddTransactionFormComponent /> : null }
+        {editAccountToggleFlag ? <EditAccountFormComponent /> : null }
+        <Sidebar />
+        <section className="container-account">
+          <Switch>
+            <Route path="/" exact component={Account} />
+            <Route path="/notes" component={ReleaseNotes} />
+          </Switch>
+        </section>
+      </main>
+    </Router>
+  
 )}
 
 const mapStateToProps = state => ({
@@ -30,5 +36,8 @@ const mapStateToProps = state => ({
   transactionToggleFlag: state.formToggle.addTransactionModal
 })
 
+const mapDispatchToProps = dispatch => ({
+  setBudgetAccount: currentAccountID => dispatch(setBudgetAccount(currentAccountID)),
+})
 
-export default connect(mapStateToProps)(App)
+export default connect(mapStateToProps,mapDispatchToProps)(App)

@@ -1,10 +1,11 @@
 import "./Sidebar.styles.scss"
 import { useState, useEffect } from "react"
+import { NavLink } from "react-router-dom"
 import { connect } from "react-redux"
 import { setBudgetAccount } from "../redux/budgetAccount/budgetAccount.actions"
 import { toggleAccountForm, toggleSidebar } from "../redux/modal/modal.actions"
 
-import { BsPeople, BsPersonPlus, BsGear, BsCodeSlash, BsLayoutTextSidebarReverse } from "react-icons/bs";
+import { BsPeople, BsGear, BsCodeSlash, BsLayoutTextSidebarReverse } from "react-icons/bs";
 
 const Sidebar = ({ currentID, accounts, setBudgetAccount, accountToggleFlag, toggleSidebarFlag, toggleSidebar, toggleAccountForm }) => {
 
@@ -41,7 +42,6 @@ const Sidebar = ({ currentID, accounts, setBudgetAccount, accountToggleFlag, tog
   //to set current account to show
   const handleSetBudgetAccount = (account) => {
     setBudgetAccount(account)
-    
   } 
 
   //
@@ -59,20 +59,17 @@ const Sidebar = ({ currentID, accounts, setBudgetAccount, accountToggleFlag, tog
   //list of account
   const accountList = accounts.map((account) => {
     return(
-      <h4 
-        key={account.uniqueID} 
-        onClick={ () => handleAccountItemClick(account.uniqueID)}
-        className = {account.uniqueID === currentID ? "selected" : null}
-      >
-      {account.name}
-      </h4>
+        <h4 
+          key={account.uniqueID} 
+          onClick={ () => handleAccountItemClick(account.uniqueID)}
+          // className = {account.uniqueID === currentID ? "selected" : null}
+        >
+          <NavLink to="/" exact style={{ color: 'inherit', textDecoration: 'none'}} activeClassName="selected">
+          {account.name}
+          </NavLink>
+        </h4>
     )
   })
-
-  const accountListUpdated = [
-    {accountList},
-    <h4 className="nav-new-account" onClick={() => handleSetToggleForm()}>Add Account +</h4>
-  ]
 
   const handleToggleSidebar = () => {
     toggleSidebar(!toggleSidebarFlag)
@@ -113,7 +110,11 @@ const Sidebar = ({ currentID, accounts, setBudgetAccount, accountToggleFlag, tog
               <BsCodeSlash />
               <label>NOTES</label>
             </div>
-            <h4>Developer Notes</h4>
+            <h4>
+              <NavLink to="/notes" exact style={{ color: 'inherit', textDecoration: 'none'}} activeClassName="selected">
+                Release Notes
+              </NavLink>
+            </h4>
             <div className="nav-label">
               <BsGear />
               <label>SETTINGS</label>

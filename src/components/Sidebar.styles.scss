@@ -79,12 +79,12 @@ nav > main{
   &:hover{
     font-weight: 900;
   }
-
-  &.selected{
-    font-weight: 900;
-  }
-
 }
+
+.selected{
+  font-weight: 900;
+}
+
 
 .nav-footer{
   width: 100%;

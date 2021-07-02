@@ -85,6 +85,7 @@ const AddTransactionForm = ({transactionUniqueID, addTransaction, addTransaction
               type="number" 
               value={ cost } 
               onChange={event => handleCostChange(event)} 
+              min="1"
               max="10000000"
               required
             />

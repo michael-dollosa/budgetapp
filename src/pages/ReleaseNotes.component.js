@@ -1,4 +1,4 @@
-import "./RealaseNotes.styles.scss"
+import "./ReleaseNotes.styles.scss"
 import { BsForwardFill } from "react-icons/bs";
 
 
@@ -20,5 +20,7 @@ const ReleaseNotes = () => {
     </section>
   )
 }
+
+
 
 export default ReleaseNotes

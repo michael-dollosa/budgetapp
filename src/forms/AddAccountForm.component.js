@@ -5,7 +5,7 @@ import { toggleAccountForm, toggleSidebar } from "../redux/modal/modal.actions"
 import { BsX } from "react-icons/bs";
 import "./AddAccountForm.styles.scss"
 
-const AddAccountForm = ({uniqueID, addBudgetAccount, accountToggleFlag, toggleAccountForm, toggleSidebar, toggleSidebarFlag}) => {
+const AddAccountForm = ({ uniqueID, addBudgetAccount, accountToggleFlag, toggleAccountForm, toggleSidebar, toggleSidebarFlag}) => {
   const [accountName, setAccountName] = useState(null)
   const [budget, setBudget] = useState(null)
 
@@ -35,11 +35,13 @@ const AddAccountForm = ({uniqueID, addBudgetAccount, accountToggleFlag, toggleAc
     
     addBudgetAccount(newAccount)
     toggleAccountForm(!accountToggleFlag)
+    window.location.href="/"
     toggleSidebar(false)
     setAccountName("")
     setBudget(0)
     event.preventDefault()
   }
+
   return(
     <div className="modal-container">
       <section className="account-form-container">
@@ -64,6 +66,7 @@ const AddAccountForm = ({uniqueID, addBudgetAccount, accountToggleFlag, toggleAc
               placeholder="Allocate budget"
               value={ budget } 
               onChange={event => handleBudgetChange(event)} 
+              min="1"
               max="10000000"
               required
             />

@@ -1,3 +1,5 @@
+import { Redirect } from "react-router-dom"
+
 export const formatBudget = (number) => {
   return `₱ ${Number(number).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`
 }
@@ -17,3 +19,7 @@ export const formatCost= (type, number) => {
 }
 
 export const currentDate = new Date().toISOString().substr(0, 10);
+
+export const redirectToPath = (url) => {
+  return <Redirect to={url} />
+}

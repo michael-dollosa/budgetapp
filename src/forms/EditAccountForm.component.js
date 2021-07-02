@@ -61,6 +61,8 @@ const EditAccountForm = ({currentAccount, currentAccountID, deleteBudgetAccount,
               placeholder="Allocate budget"
               value={ accountBudget } 
               onChange={event => handleBudgetChange(event)} 
+              min="1"
+              max="10000000"
               required
             />
             <input 
