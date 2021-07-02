@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { history, useHistory } from "react-router-dom"
 import { connect } from "react-redux"
 import { addBudgetAccount } from "../redux/budgetAccount/budgetAccount.actions"
 import { toggleAccountForm, toggleSidebar } from "../redux/modal/modal.actions"
@@ -6,9 +7,9 @@ import { BsX } from "react-icons/bs";
 import "./AddAccountForm.styles.scss"
 
 const AddAccountForm = ({ uniqueID, addBudgetAccount, accountToggleFlag, toggleAccountForm, toggleSidebar, toggleSidebarFlag}) => {
-  const [accountName, setAccountName] = useState(null)
+  const [accountName, setAccountName] = useState("")
   const [budget, setBudget] = useState(null)
-
+  let history = useHistory()
   const handleNameChange = (event) => {
     setAccountName(event.target.value)
   }
@@ -35,7 +36,7 @@ const AddAccountForm = ({ uniqueID, addBudgetAccount, accountToggleFlag, toggleA
     
     addBudgetAccount(newAccount)
     toggleAccountForm(!accountToggleFlag)
-    window.location.href=`/account/${uniqueID}`
+    history.push(`/account/${uniqueID}`)
     toggleSidebar(false)
     setAccountName("")
     setBudget(0)
@@ -57,7 +58,7 @@ const AddAccountForm = ({ uniqueID, addBudgetAccount, accountToggleFlag, toggleA
               placeholder="Name of your budget area"
               value={ accountName } 
               onChange={event => handleNameChange(event)} 
-              maxlength="20"
+              maxLength="20"
               required
             />
             <label>Budget</label>

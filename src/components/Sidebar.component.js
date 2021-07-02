@@ -5,7 +5,7 @@ import { connect } from "react-redux"
 import { setBudgetAccount } from "../redux/budgetAccount/budgetAccount.actions"
 import { toggleAccountForm, toggleSidebar } from "../redux/modal/modal.actions"
 // import logo from "../../public/budget-logo.png"
-import { BsPeople, BsGear, BsCodeSlash, BsLayoutTextSidebarReverse } from "react-icons/bs";
+import { BsPeople, BsGear, BsCodeSlash, BsFillGearFill } from "react-icons/bs";
 
 const Sidebar = ({ currentID, accounts, setBudgetAccount, accountToggleFlag, toggleSidebarFlag, toggleSidebar, toggleAccountForm }) => {
 
@@ -59,12 +59,15 @@ const Sidebar = ({ currentID, accounts, setBudgetAccount, accountToggleFlag, tog
   //list of account
   const accountList = accounts.map((account) => {
     return(
-        <h4 
-          key={account.uniqueID}
-          onClick={ () => handleAccountItemClick(account.uniqueID)}
-        >
-          <NavLink to={`/account/${account.uniqueID}`} exact style={{ color: 'inherit', textDecoration: 'none'}} activeClassName="selected" >
-          {account.name}
+        <h4 key={account.uniqueID}>
+          <NavLink 
+            to={`/account/${account.uniqueID}`} 
+            exact 
+            style={{ color: 'inherit', textDecoration: 'none'}} 
+            activeClassName="selected" 
+            onClick={ () => handleAccountItemClick(account.uniqueID)}
+          >
+            {account.name}
           </NavLink>
         </h4>
     )
@@ -73,6 +76,8 @@ const Sidebar = ({ currentID, accounts, setBudgetAccount, accountToggleFlag, tog
   const handleToggleSidebar = () => {
     toggleSidebar(!toggleSidebarFlag)
   }
+
+  const toggleIconColor = toggleSidebarFlag ? "toggle-icon white" : "toggle-icon"
 
   //setup variable to controll nav class
   const sideBarHiddenFlagClass = 
@@ -83,7 +88,7 @@ const Sidebar = ({ currentID, accounts, setBudgetAccount, accountToggleFlag, tog
   return(
     <section className="sidebar-toggle">
       <div className="sidebar-toggle-icon">
-        <BsLayoutTextSidebarReverse className="toggle-icon" onClick={handleToggleSidebar}/>
+        <BsFillGearFill className={toggleIconColor} onClick={handleToggleSidebar}/>
       </div>
       
       <nav className={sideBarHiddenFlagClass}>

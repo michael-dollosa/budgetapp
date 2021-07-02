@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react"
+import { useState, useRef } from "react"
 import { connect } from "react-redux"
 import { addTransaction } from "../redux/budgetAccount/budgetAccount.actions"
 import { currentDate } from "../helper/helper"
@@ -7,7 +7,6 @@ import { BsX } from "react-icons/bs";
 import "./AddTransactionForm.styles.scss"
 
 const AddTransactionForm = ({transactionUniqueID, addTransaction, addTransactionToggle, toggleTransactionForm}) => {
-  
   
   const [transactionName, setTransactionName] = useState(null)
   const [cost, setCost] = useState(null)

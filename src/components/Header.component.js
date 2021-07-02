@@ -1,11 +1,16 @@
 import { connect } from "react-redux"
-import { Fragment } from "react"
+import { useEffect } from "react"
+import { useHistory } from "react-router-dom"
 import { formatBudget, formatCost } from "../helper/helper"
 import { toggleEditAccountForm } from "../redux/modal/modal.actions"
 import { FaRegEdit } from "react-icons/fa";
 import "./Header.styles.scss"
 const Header = ({account, editAccountToggleFlag, toggleEditAccountForm }) => {
 
+  let history = useHistory()
+  useEffect(() => {
+    history.push(`/account/${account.uniqueID}`)
+  }, [account.uniqueID, history])
   //fn to set toggle state
   const handleSetToggleForm = () => {
     toggleEditAccountForm(!editAccountToggleFlag)

@@ -5,7 +5,7 @@ import { toggleEditAccountForm } from "../redux/modal/modal.actions"
 import { BsX } from "react-icons/bs";
 import "./AddAccountForm.styles.scss"
 
-const EditAccountForm = ({currentAccount, currentAccountID, deleteBudgetAccount, modifyBudgetAccount, editAccountToggleFlag, toggleEditAccountForm}) => {
+const EditAccountForm = ({ currentAccount, currentAccountID, deleteBudgetAccount, modifyBudgetAccount, editAccountToggleFlag, toggleEditAccountForm}) => {
   const { name, budget } = currentAccount
   
   const [accountName, setAccountName] = useState(name)
@@ -26,7 +26,6 @@ const EditAccountForm = ({currentAccount, currentAccountID, deleteBudgetAccount,
 
   const handleDeleteAccount = (id) => {
     deleteBudgetAccount(id)
-    window.location.href=`/account/${currentAccountID}`
     toggleEditAccountForm(!editAccountToggleFlag)
   }
 

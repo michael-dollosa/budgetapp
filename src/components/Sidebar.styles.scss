@@ -112,7 +112,7 @@ nav > main{
 .sidebar-toggle-icon{
   display: none;
   z-index: 3;
-
+  cursor: pointer;
   @media only screen and (max-width: 720px) {
     display: block;
     position: absolute;
@@ -124,5 +124,11 @@ nav > main{
     font-size: 1.5rem;
     // color: white;
     // background-color: var(--color-primary);
+
+    
   }
+}
+
+.white{
+  color: white
 }

@@ -1,5 +1,5 @@
 import { addTransaction, deleteTransaction, modifyAccount, deleteAccount, checkAccountIndex } from "./budgetAccount.utils"
-import { testAccounts } from "../../seed"
+
 
 const INITIAL_STATE = {
   currentAccountID: null,
