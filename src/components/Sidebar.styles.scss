@@ -5,9 +5,15 @@ nav {
   height: 100vh;
   position: fixed;
   @media only screen and (max-width: 720px) {
-    display: none;
+    animation-name: moveInLeft;
+    animation-duration: .5s;
+    animation-timing-function: ease-out;
     width: 100%;
   }
+}
+
+.display-none{
+  display: none;
 }
 
 nav > main{

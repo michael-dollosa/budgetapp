@@ -1,11 +1,11 @@
 import { useState } from "react"
 import { connect } from "react-redux"
 import { addBudgetAccount } from "../redux/budgetAccount/budgetAccount.actions"
-import { toggleAccountForm } from "../redux/modal/modal.actions"
+import { toggleAccountForm, toggleSidebar } from "../redux/modal/modal.actions"
 import { BsX } from "react-icons/bs";
 import "./AddAccountForm.styles.scss"
 
-const AddAccountForm = ({uniqueID, addBudgetAccount, accountToggleFlag, toggleAccountForm}) => {
+const AddAccountForm = ({uniqueID, addBudgetAccount, accountToggleFlag, toggleAccountForm, toggleSidebar, toggleSidebarFlag}) => {
   const [accountName, setAccountName] = useState(null)
   const [budget, setBudget] = useState(null)
 
@@ -32,9 +32,10 @@ const AddAccountForm = ({uniqueID, addBudgetAccount, accountToggleFlag, toggleAc
       totalExpense: 0,
       totalIncome: 0,
     }
-
+    
     addBudgetAccount(newAccount)
     toggleAccountForm(!accountToggleFlag)
+    toggleSidebar(true)
     setAccountName("")
     setBudget(0)
     event.preventDefault()
@@ -80,12 +81,14 @@ const AddAccountForm = ({uniqueID, addBudgetAccount, accountToggleFlag, toggleAc
 const mapStatetoProps = state => ({
   //need to get the current uniqueID to add as identifier for each new account
   uniqueID: state.budgetAccount.counter,
-  accountToggleFlag: state.formToggle.addAccountModal
+  accountToggleFlag: state.formToggle.addAccountModal,
+  toggleSidebarFlag: state.formToggle.sidebarModal
 })
 
 const mapDispatchToProps = dispatch => ({
  addBudgetAccount: account => dispatch(addBudgetAccount(account)),
- toggleAccountForm: flag => dispatch(toggleAccountForm(flag))
+ toggleAccountForm: flag => dispatch(toggleAccountForm(flag)),
+ toggleSidebar: flag => dispatch(toggleSidebar(flag))
 })
 
 export default connect(mapStatetoProps, mapDispatchToProps)(AddAccountForm)
