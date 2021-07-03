@@ -29,7 +29,7 @@ const Sidebar = ({ currentID, accounts, setBudgetAccount, accountToggleFlag, tog
       toggleSidebar(false)
     }
     // console.log("flag")
-  }, [currentBrowserWidth])
+  }, [currentBrowserWidth, toggleSidebar])
 
   //fn to set toggle state
   const handleSetToggleForm = () => {

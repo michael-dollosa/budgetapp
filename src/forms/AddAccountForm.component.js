@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { history, useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 import { connect } from "react-redux"
 import { addBudgetAccount } from "../redux/budgetAccount/budgetAccount.actions"
 import { toggleAccountForm, toggleSidebar } from "../redux/modal/modal.actions"
@@ -8,7 +8,7 @@ import "./AddAccountForm.styles.scss"
 
 const AddAccountForm = ({ uniqueID, addBudgetAccount, accountToggleFlag, toggleAccountForm, toggleSidebar, toggleSidebarFlag}) => {
   const [accountName, setAccountName] = useState("")
-  const [budget, setBudget] = useState(null)
+  const [budget, setBudget] = useState("")
   let history = useHistory()
   const handleNameChange = (event) => {
     setAccountName(event.target.value)

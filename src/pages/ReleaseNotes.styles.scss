@@ -17,8 +17,6 @@
   }
 
   p{
-    display: flex;
-    align-items: flex-start;
     font-size: var(--font-size-default);
     list-style-type: circle;
     margin-bottom: .5rem;
@@ -29,4 +27,8 @@
       margin: 0 5px 0 5px;
     }
   }
+}
+
+.notes-icon{
+  font-size: 1rem;
 }
