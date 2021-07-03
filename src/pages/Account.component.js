@@ -3,7 +3,6 @@ import { Fragment } from "react"
 import { connect } from "react-redux"
 import { Redirect } from 'react-router';
 import Header from "../components/Header.component"
-import ReleaseNotes from "./ReleaseNotes.component"
 import "./Account.styles.scss"
 
 const Account = ({ initalCheck }) => {
@@ -14,7 +13,7 @@ const Account = ({ initalCheck }) => {
       <Header />
       <TransactionLog />
     </Fragment>
-  : <Redirect to="/notes" />
+  : <Redirect to="/" />
   return(
     <main className="account-container-main">
       

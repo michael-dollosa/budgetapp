@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react"
+import { useState, useRef } from "react"
 import { connect } from "react-redux"
 import { addTransaction } from "../redux/budgetAccount/budgetAccount.actions"
 import { currentDate } from "../helper/helper"
@@ -8,9 +8,8 @@ import "./AddTransactionForm.styles.scss"
 
 const AddTransactionForm = ({transactionUniqueID, addTransaction, addTransactionToggle, toggleTransactionForm}) => {
   
-  
-  const [transactionName, setTransactionName] = useState(null)
-  const [cost, setCost] = useState(null)
+  const [transactionName, setTransactionName] = useState("")
+  const [cost, setCost] = useState("")
   const [date, setDate] = useState(currentDate)
   const [type, setType] = useState("expense")
   const refToParentElement = useRef()

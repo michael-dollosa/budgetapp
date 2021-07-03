@@ -4,8 +4,8 @@ import { NavLink } from "react-router-dom"
 import { connect } from "react-redux"
 import { setBudgetAccount } from "../redux/budgetAccount/budgetAccount.actions"
 import { toggleAccountForm, toggleSidebar } from "../redux/modal/modal.actions"
-
-import { BsPeople, BsGear, BsCodeSlash, BsLayoutTextSidebarReverse } from "react-icons/bs";
+// import logo from "../../public/budget-logo.png"
+import { BsPeople, BsGear, BsCodeSlash, BsFillGearFill } from "react-icons/bs";
 
 const Sidebar = ({ currentID, accounts, setBudgetAccount, accountToggleFlag, toggleSidebarFlag, toggleSidebar, toggleAccountForm }) => {
 
@@ -29,7 +29,7 @@ const Sidebar = ({ currentID, accounts, setBudgetAccount, accountToggleFlag, tog
       toggleSidebar(false)
     }
     // console.log("flag")
-  }, [currentBrowserWidth])
+  }, [currentBrowserWidth, toggleSidebar])
 
   //fn to set toggle state
   const handleSetToggleForm = () => {
@@ -59,13 +59,15 @@ const Sidebar = ({ currentID, accounts, setBudgetAccount, accountToggleFlag, tog
   //list of account
   const accountList = accounts.map((account) => {
     return(
-        <h4 
-          key={account.uniqueID} 
-          onClick={ () => handleAccountItemClick(account.uniqueID)}
-          // className = {account.uniqueID === currentID ? "selected" : null}
-        >
-          <NavLink to="/" exact style={{ color: 'inherit', textDecoration: 'none'}} activeClassName="selected">
-          {account.name}
+        <h4 key={account.uniqueID}>
+          <NavLink 
+            to={`/account/${account.uniqueID}`} 
+            exact 
+            style={{ color: 'inherit', textDecoration: 'none'}} 
+            activeClassName="selected" 
+            onClick={ () => handleAccountItemClick(account.uniqueID)}
+          >
+            {account.name}
           </NavLink>
         </h4>
     )
@@ -74,6 +76,8 @@ const Sidebar = ({ currentID, accounts, setBudgetAccount, accountToggleFlag, tog
   const handleToggleSidebar = () => {
     toggleSidebar(!toggleSidebarFlag)
   }
+
+  const toggleIconColor = toggleSidebarFlag ? "toggle-icon white" : "toggle-icon"
 
   //setup variable to controll nav class
   const sideBarHiddenFlagClass = 
@@ -84,18 +88,18 @@ const Sidebar = ({ currentID, accounts, setBudgetAccount, accountToggleFlag, tog
   return(
     <section className="sidebar-toggle">
       <div className="sidebar-toggle-icon">
-        <BsLayoutTextSidebarReverse className="toggle-icon" onClick={handleToggleSidebar}/>
+        <BsFillGearFill className={toggleIconColor} onClick={handleToggleSidebar}/>
       </div>
       
       <nav className={sideBarHiddenFlagClass}>
         <main>
           <section className="nav-section">
             <div className="nav-label">
-              <img src="./budget-logo.png" alt="" />
+              <img src={window.location.origin + "/budget-logo.png"} alt="" />
               <h1>Budget App</h1>
             </div>
             
-          <div className="nav-label">
+            <div className="nav-label">
               <BsPeople /> 
               <label>ACCOUNTS</label>
             </div>
@@ -111,7 +115,7 @@ const Sidebar = ({ currentID, accounts, setBudgetAccount, accountToggleFlag, tog
               <label>NOTES</label>
             </div>
             <h4>
-              <NavLink to="/notes" exact style={{ color: 'inherit', textDecoration: 'none'}} activeClassName="selected">
+              <NavLink to="/" exact style={{ color: 'inherit', textDecoration: 'none'}} activeClassName="selected">
                 Release Notes
               </NavLink>
             </h4>

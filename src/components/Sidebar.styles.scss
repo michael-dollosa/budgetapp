@@ -35,10 +35,20 @@ nav > main{
 
 .nav-section{
   color: var(--font-color-white);
+  & h4{
+    padding: 1rem 0;
+    cursor: pointer;
+    margin-left: 2rem;
+    text-transform: capitalize;
+    // &:hover{
+    //   font-weight: 900;
+    // }
+  }
 }
 
 .nav-section > * {
   font-weight: 300;
+  
 }
 
 .nav-label {
@@ -71,15 +81,7 @@ nav > main{
   margin-left: 1rem;
 }
 
-.nav-section > h4{
-  padding: 1rem 0;
-  cursor: pointer;
-  margin-left: 2rem;
-  text-transform: capitalize;
-  &:hover{
-    font-weight: 900;
-  }
-}
+
 
 .selected{
   font-weight: 900;
@@ -110,7 +112,7 @@ nav > main{
 .sidebar-toggle-icon{
   display: none;
   z-index: 3;
-
+  cursor: pointer;
   @media only screen and (max-width: 720px) {
     display: block;
     position: absolute;
@@ -122,5 +124,11 @@ nav > main{
     font-size: 1.5rem;
     // color: white;
     // background-color: var(--color-primary);
+
+    
   }
+}
+
+.white{
+  color: white
 }
