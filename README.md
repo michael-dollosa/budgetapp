@@ -2,17 +2,17 @@
 
 This is a budget application using create-react-app. 
 
-##Data Storage
+## Data Storage
 - Data are stored in your browser’s local storage. If you wish to clear or restart the data, just click the Clear Local Storage located on the sidebar. Or, you may press F12 -> On the top bar, choose Application -> On the left-hand side, you will see Local Storage -> Right click the item below -> Choose clear.
 
-##Account Creation
+## Account Creation
 - Start creating your account by clicking the Add Account on the sidebar or clicking the add account button at the bottom right side.
 
 - The maximum budget that you can allocate per account is Php 10,000,000.
 
 - Only 6 accounts are allowed to be created. Kindly delete previous accounts if you need to add a new one.
 
-##Create Transaction
+## Create Transaction
 - The maximum account per transaction is Php 10,000,000.
 
 - User may choose transaction type - Income or Expense.
